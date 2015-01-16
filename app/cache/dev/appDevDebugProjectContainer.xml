@@ -30,7 +30,7 @@
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
     <parameter key="database_driver">pdo_mysql</parameter>
     <parameter key="database_host">127.0.0.1</parameter>
-    <parameter key="database_port">null</parameter>
+    <parameter key="database_port">8889</parameter>
     <parameter key="database_name">spiderman</parameter>
     <parameter key="database_user">root</parameter>
     <parameter key="database_password">root</parameter>
@@ -3308,7 +3308,7 @@
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
         <argument key="host">127.0.0.1</argument>
-        <argument key="port">null</argument>
+        <argument key="port">8889</argument>
         <argument key="dbname">spiderman</argument>
         <argument key="user">root</argument>
         <argument key="password">root</argument>
