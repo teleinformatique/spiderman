@@ -1,0 +1,8 @@
+couture_client:
+    resource: "@CoutureClientBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
