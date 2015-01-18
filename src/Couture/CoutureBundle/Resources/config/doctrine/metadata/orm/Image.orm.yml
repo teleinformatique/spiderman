@@ -1,0 +1,34 @@
+Image:
+    type: entity
+    table: image
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        path:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        datec:
+            type: datetime
+            nullable: true
+        datemod:
+            type: datetime
+            nullable: true
+        iduser:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: idUser
+    lifecycleCallbacks: {  }

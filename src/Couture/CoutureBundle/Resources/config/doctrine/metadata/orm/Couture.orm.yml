@@ -1,0 +1,84 @@
+Couture:
+    type: entity
+    table: couture
+    indexes:
+        fk_couture_client_idx:
+            columns:
+                - client
+        fk_couture_modele1_idx:
+            columns:
+                - modele
+        fk_couture_mesure1_idx:
+            columns:
+                - mesure
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        datec:
+            type: datetime
+            nullable: true
+        datemod:
+            type: datetime
+            nullable: true
+        datefin:
+            type: datetime
+            nullable: true
+        prix:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+        tissu:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        detail:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+        iduser:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: idUser
+        etat:
+            type: integer
+            nullable: true
+            unsigned: false
+    manyToOne:
+        client:
+            targetEntity: Client
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                client:
+                    referencedColumnName: id
+            orphanRemoval: false
+        modele:
+            targetEntity: Modele
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                modele:
+                    referencedColumnName: id
+            orphanRemoval: false
+        mesure:
+            targetEntity: Mesure
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                mesure:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

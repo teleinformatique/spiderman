@@ -20,6 +20,9 @@
       <parameter key="LexikFormFilterBundle">Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle</parameter>
       <parameter key="JordiLlonchCrudGeneratorBundle">JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle</parameter>
       <parameter key="CoutureClientBundle">Couture\ClientBundle\CoutureClientBundle</parameter>
+      <parameter key="CoutureCoutureBundle">Couture\CoutureBundle\CoutureCoutureBundle</parameter>
+      <parameter key="CoutureFacturationBundle">Couture\FacturationBundle\CoutureFacturationBundle</parameter>
+      <parameter key="CoutureTailleurBundle">Couture\TailleurBundle\CoutureTailleurBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
@@ -3385,7 +3388,12 @@
       <argument type="service">
         <service class="Doctrine\ORM\Configuration" public="false">
           <call method="setEntityNamespaces">
-            <argument type="collection"/>
+            <argument type="collection">
+              <argument key="CoutureClientBundle">Couture\ClientBundle\Entity</argument>
+              <argument key="CoutureCoutureBundle">Couture\CoutureBundle\Entity</argument>
+              <argument key="CoutureFacturationBundle">Couture\FacturationBundle\Entity</argument>
+              <argument key="CoutureTailleurBundle">Couture\TailleurBundle\Entity</argument>
+            </argument>
           </call>
           <call method="setMetadataCacheImpl">
             <argument type="service" id="doctrine_cache.providers.doctrine.orm.default_metadata_cache"/>
@@ -3398,7 +3406,64 @@
           </call>
           <call method="setMetadataDriverImpl">
             <argument type="service">
-              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false"/>
+              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/ClientBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/CoutureBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/FacturationBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/TailleurBundle/Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>Couture\ClientBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/ClientBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/CoutureBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/FacturationBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/TailleurBundle/Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>Couture\CoutureBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/ClientBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/CoutureBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/FacturationBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/TailleurBundle/Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>Couture\FacturationBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/ClientBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/CoutureBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/FacturationBundle/Entity</argument>
+                        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/TailleurBundle/Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>Couture\TailleurBundle\Entity</argument>
+                </call>
+              </service>
             </argument>
           </call>
           <call method="setProxyDir">
@@ -3944,6 +4009,18 @@
       <call method="addPath">
         <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/ClientBundle/Resources/views</argument>
         <argument>CoutureClient</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/CoutureBundle/Resources/views</argument>
+        <argument>CoutureCouture</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/FacturationBundle/Resources/views</argument>
+        <argument>CoutureFacturation</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Applications/MAMP/htdocs/spiderman2/src/Couture/TailleurBundle/Resources/views</argument>
+        <argument>CoutureTailleur</argument>
       </call>
       <call method="addPath">
         <argument>/Applications/MAMP/htdocs/spiderman2/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>

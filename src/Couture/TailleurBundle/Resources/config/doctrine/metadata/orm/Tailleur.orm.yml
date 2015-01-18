@@ -1,0 +1,68 @@
+Tailleur:
+    type: entity
+    table: tailleur
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        prenom:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        telephone:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        login:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        password:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        dateembauche:
+            type: date
+            nullable: true
+            column: dateEmbauche
+        salaire:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+        user:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'est utilisateur ou pas'
+        datemod:
+            type: datetime
+            nullable: true
+        iduser:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: idUser
+        datec:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }

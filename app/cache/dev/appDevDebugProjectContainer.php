@@ -694,21 +694,31 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        $a = new \Doctrine\ORM\Configuration();
-        $a->setEntityNamespaces(array());
-        $a->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_metadata_cache'));
-        $a->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_query_cache'));
-        $a->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_result_cache'));
-        $a->setMetadataDriverImpl(new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain());
-        $a->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
-        $a->setProxyNamespace('Proxies');
-        $a->setAutoGenerateProxyClasses(true);
-        $a->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        $a->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
-        $a->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
-        $a->setEntityListenerResolver($this->get('doctrine.orm.default_entity_listener_resolver'));
+        $a = $this->get('annotation_reader');
 
-        $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.default_connection'), $a);
+        $b = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'/src/Couture/ClientBundle/Entity'), 1 => ($this->targetDirs[3].'/src/Couture/CoutureBundle/Entity'), 2 => ($this->targetDirs[3].'/src/Couture/FacturationBundle/Entity'), 3 => ($this->targetDirs[3].'/src/Couture/TailleurBundle/Entity')));
+
+        $c = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
+        $c->addDriver($b, 'Couture\\ClientBundle\\Entity');
+        $c->addDriver($b, 'Couture\\CoutureBundle\\Entity');
+        $c->addDriver($b, 'Couture\\FacturationBundle\\Entity');
+        $c->addDriver($b, 'Couture\\TailleurBundle\\Entity');
+
+        $d = new \Doctrine\ORM\Configuration();
+        $d->setEntityNamespaces(array('CoutureClientBundle' => 'Couture\\ClientBundle\\Entity', 'CoutureCoutureBundle' => 'Couture\\CoutureBundle\\Entity', 'CoutureFacturationBundle' => 'Couture\\FacturationBundle\\Entity', 'CoutureTailleurBundle' => 'Couture\\TailleurBundle\\Entity'));
+        $d->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_metadata_cache'));
+        $d->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_query_cache'));
+        $d->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_result_cache'));
+        $d->setMetadataDriverImpl($c);
+        $d->setProxyDir((__DIR__.'/doctrine/orm/Proxies'));
+        $d->setProxyNamespace('Proxies');
+        $d->setAutoGenerateProxyClasses(true);
+        $d->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $d->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $d->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+        $d->setEntityListenerResolver($this->get('doctrine.orm.default_entity_listener_resolver'));
+
+        $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.default_connection'), $d);
 
         $this->get('doctrine.orm.default_manager_configurator')->configure($instance);
 
@@ -3738,6 +3748,9 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'/vendor/lexik/form-filter-bundle/Lexik/Bundle/FormFilterBundle/Resources/views'), 'LexikFormFilter');
         $instance->addPath(($this->targetDirs[3].'/vendor/jordillonch/crud-generator/JordiLlonch/Bundle/CrudGeneratorBundle/Resources/views'), 'JordiLlonchCrudGenerator');
         $instance->addPath(($this->targetDirs[3].'/src/Couture/ClientBundle/Resources/views'), 'CoutureClient');
+        $instance->addPath(($this->targetDirs[3].'/src/Couture/CoutureBundle/Resources/views'), 'CoutureCouture');
+        $instance->addPath(($this->targetDirs[3].'/src/Couture/FacturationBundle/Resources/views'), 'CoutureFacturation');
+        $instance->addPath(($this->targetDirs[3].'/src/Couture/TailleurBundle/Resources/views'), 'CoutureTailleur');
         $instance->addPath(($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'/src/Acme/DemoBundle/Resources/views'), 'AcmeDemo');
         $instance->addPath(($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views'), 'WebProfiler');
@@ -4232,6 +4245,9 @@ class appDevDebugProjectContainer extends Container
                 'LexikFormFilterBundle' => 'Lexik\\Bundle\\FormFilterBundle\\LexikFormFilterBundle',
                 'JordiLlonchCrudGeneratorBundle' => 'JordiLlonch\\Bundle\\CrudGeneratorBundle\\JordiLlonchCrudGeneratorBundle',
                 'CoutureClientBundle' => 'Couture\\ClientBundle\\CoutureClientBundle',
+                'CoutureCoutureBundle' => 'Couture\\CoutureBundle\\CoutureCoutureBundle',
+                'CoutureFacturationBundle' => 'Couture\\FacturationBundle\\CoutureFacturationBundle',
+                'CoutureTailleurBundle' => 'Couture\\TailleurBundle\\CoutureTailleurBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
