@@ -20,6 +20,9 @@ class AppKernel extends Kernel
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
             new Couture\ClientBundle\CoutureClientBundle(),
+            new Couture\CoutureBundle\CoutureCoutureBundle(),
+            new Couture\FacturationBundle\CoutureFacturationBundle(),
+            new Couture\TailleurBundle\CoutureTailleurBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

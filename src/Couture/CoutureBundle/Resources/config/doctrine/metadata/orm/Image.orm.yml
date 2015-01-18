@@ -1,0 +1,48 @@
+Image:
+    type: entity
+    table: image
+    indexes:
+        fk_image_modele1_idx:
+            columns:
+                - idModele
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        path:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        datec:
+            type: datetime
+            nullable: true
+        datemod:
+            type: datetime
+            nullable: true
+        iduser:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: idUser
+    manyToOne:
+        idmodele:
+            targetEntity: Modele
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idModele:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,84 @@
+Couture:
+    type: entity
+    table: couture
+    indexes:
+        fk_spiderman_client_idx:
+            columns:
+                - idClient
+        fk_spiderman_modele1_idx:
+            columns:
+                - idModele
+        fk_spiderman_mesure1_idx:
+            columns:
+                - idMesure
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        datec:
+            type: datetime
+            nullable: true
+        datemod:
+            type: datetime
+            nullable: true
+        datefin:
+            type: datetime
+            nullable: true
+        prix:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+        tissu:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        detail:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+        iduser:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: idUser
+        etat:
+            type: integer
+            nullable: true
+            unsigned: false
+    manyToOne:
+        idclient:
+            targetEntity: Client
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idClient:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idmodele:
+            targetEntity: Modele
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idModele:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idmesure:
+            targetEntity: Mesure
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idMesure:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

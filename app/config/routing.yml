@@ -1,3 +1,18 @@
+couture_tailleur:
+    resource: "@CoutureTailleurBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+couture_facturation:
+    resource: "@CoutureFacturationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+couture_couture:
+    resource: "@CoutureCoutureBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 couture_client:
     resource: "@CoutureClientBundle/Controller/"
     type:     annotation

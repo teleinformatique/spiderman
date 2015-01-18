@@ -1,0 +1,70 @@
+Mesure:
+    type: entity
+    table: mesure
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cou:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+        poitrine:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+        taille:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+        ceinture:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+        longchemise:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+            comment: 'longueur de la chemise , taille basse'
+            column: longChemise
+        longpantalon:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+            column: longPantalon
+        longrobe:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+            column: longRobe
+        manche:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+            comment: 'courte ou longue'
+        hanche:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+            comment: 'le tour des hanches'
+        epaule:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 3
+            comment: 'longueur des épaules'
+    lifecycleCallbacks: {  }

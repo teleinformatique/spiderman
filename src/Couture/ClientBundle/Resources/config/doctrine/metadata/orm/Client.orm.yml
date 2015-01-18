@@ -1,0 +1,46 @@
+Client:
+    type: entity
+    table: client
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        prenom:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        telephone:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        adresse:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        datec:
+            type: datetime
+            nullable: true
+        iduser:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: idUser
+    lifecycleCallbacks: {  }

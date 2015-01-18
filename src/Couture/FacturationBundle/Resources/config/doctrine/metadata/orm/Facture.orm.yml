@@ -1,0 +1,46 @@
+Facture:
+    type: entity
+    table: facture
+    indexes:
+        fk_facture_spiderman1_idx:
+            columns:
+                - idspiderman
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        date:
+            type: date
+            nullable: true
+        payee:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'payee? '
+        datemod:
+            type: datetime
+            nullable: true
+        datec:
+            type: datetime
+            nullable: true
+        iduser:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: idUser
+    manyToOne:
+        idspiderman:
+            targetEntity: Couture
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idspiderman:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
