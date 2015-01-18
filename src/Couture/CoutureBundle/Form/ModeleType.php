@@ -13,9 +13,10 @@ class ModeleType extends AbstractType
         $builder
             ->add('libelle')
             ->add('description')
-            ->add('datec')
+            //->add('datec')
             ->add('iduser')
-            ->add('datemod')
+            //->add('datemod')
+            ->add('image', new ImageType())
         ;
     }
 

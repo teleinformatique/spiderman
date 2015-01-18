@@ -92,4 +92,244 @@ class Mesure
     private $epaule;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cou
+     *
+     * @param string $cou
+     * @return Mesure
+     */
+    public function setCou($cou)
+    {
+        $this->cou = $cou;
+
+        return $this;
+    }
+
+    /**
+     * Get cou
+     *
+     * @return string 
+     */
+    public function getCou()
+    {
+        return $this->cou;
+    }
+
+    /**
+     * Set poitrine
+     *
+     * @param string $poitrine
+     * @return Mesure
+     */
+    public function setPoitrine($poitrine)
+    {
+        $this->poitrine = $poitrine;
+
+        return $this;
+    }
+
+    /**
+     * Get poitrine
+     *
+     * @return string 
+     */
+    public function getPoitrine()
+    {
+        return $this->poitrine;
+    }
+
+    /**
+     * Set taille
+     *
+     * @param string $taille
+     * @return Mesure
+     */
+    public function setTaille($taille)
+    {
+        $this->taille = $taille;
+
+        return $this;
+    }
+
+    /**
+     * Get taille
+     *
+     * @return string 
+     */
+    public function getTaille()
+    {
+        return $this->taille;
+    }
+
+    /**
+     * Set ceinture
+     *
+     * @param string $ceinture
+     * @return Mesure
+     */
+    public function setCeinture($ceinture)
+    {
+        $this->ceinture = $ceinture;
+
+        return $this;
+    }
+
+    /**
+     * Get ceinture
+     *
+     * @return string 
+     */
+    public function getCeinture()
+    {
+        return $this->ceinture;
+    }
+
+    /**
+     * Set longchemise
+     *
+     * @param string $longchemise
+     * @return Mesure
+     */
+    public function setLongchemise($longchemise)
+    {
+        $this->longchemise = $longchemise;
+
+        return $this;
+    }
+
+    /**
+     * Get longchemise
+     *
+     * @return string 
+     */
+    public function getLongchemise()
+    {
+        return $this->longchemise;
+    }
+
+    /**
+     * Set longpantalon
+     *
+     * @param string $longpantalon
+     * @return Mesure
+     */
+    public function setLongpantalon($longpantalon)
+    {
+        $this->longpantalon = $longpantalon;
+
+        return $this;
+    }
+
+    /**
+     * Get longpantalon
+     *
+     * @return string 
+     */
+    public function getLongpantalon()
+    {
+        return $this->longpantalon;
+    }
+
+    /**
+     * Set longrobe
+     *
+     * @param string $longrobe
+     * @return Mesure
+     */
+    public function setLongrobe($longrobe)
+    {
+        $this->longrobe = $longrobe;
+
+        return $this;
+    }
+
+    /**
+     * Get longrobe
+     *
+     * @return string 
+     */
+    public function getLongrobe()
+    {
+        return $this->longrobe;
+    }
+
+    /**
+     * Set manche
+     *
+     * @param string $manche
+     * @return Mesure
+     */
+    public function setManche($manche)
+    {
+        $this->manche = $manche;
+
+        return $this;
+    }
+
+    /**
+     * Get manche
+     *
+     * @return string 
+     */
+    public function getManche()
+    {
+        return $this->manche;
+    }
+
+    /**
+     * Set hanche
+     *
+     * @param string $hanche
+     * @return Mesure
+     */
+    public function setHanche($hanche)
+    {
+        $this->hanche = $hanche;
+
+        return $this;
+    }
+
+    /**
+     * Get hanche
+     *
+     * @return string 
+     */
+    public function getHanche()
+    {
+        return $this->hanche;
+    }
+
+    /**
+     * Set epaule
+     *
+     * @param string $epaule
+     * @return Mesure
+     */
+    public function setEpaule($epaule)
+    {
+        $this->epaule = $epaule;
+
+        return $this;
+    }
+
+    /**
+     * Get epaule
+     *
+     * @return string 
+     */
+    public function getEpaule()
+    {
+        return $this->epaule;
+    }
 }

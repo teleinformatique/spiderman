@@ -20,7 +20,6 @@ class TailleurType extends AbstractType
             ->add('dateembauche')
             ->add('salaire')
             ->add('user')
-            ->add('tailleurcol')
             ->add('datemod')
             ->add('iduser')
             ->add('datec')

@@ -1,0 +1,71 @@
+Intervention:
+    type: entity
+    table: intervention
+    indexes:
+        fk_tailleur_has_couture_couture1_idx:
+            columns:
+                - couture
+        fk_tailleur_has_couture_tailleur1_idx:
+            columns:
+                - tailleur
+        fk_intervention_etatintervention1_idx:
+            columns:
+                - etatIntervention
+    id: {  }
+    fields:
+        intervention:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        frais:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+        datec:
+            type: datetime
+            nullable: true
+        datemod:
+            type: datetime
+            nullable: true
+        iduser:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: idUser
+        details:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+    oneToOne:
+        tailleur:
+            targetEntity: Tailleur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tailleur:
+                    referencedColumnName: id
+            orphanRemoval: false
+        couture:
+            targetEntity: Couture
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                couture:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToOne:
+        etatintervention:
+            targetEntity: Etatintervention
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etatIntervention:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

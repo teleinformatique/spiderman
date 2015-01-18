@@ -2,15 +2,15 @@ Couture:
     type: entity
     table: couture
     indexes:
-        fk_spiderman_client_idx:
+        fk_couture_client_idx:
             columns:
-                - idClient
-        fk_spiderman_modele1_idx:
+                - client
+        fk_couture_modele1_idx:
             columns:
-                - idModele
-        fk_spiderman_mesure1_idx:
+                - modele
+        fk_couture_mesure1_idx:
             columns:
-                - idMesure
+                - mesure
     id:
         id:
             type: integer
@@ -54,31 +54,31 @@ Couture:
             nullable: true
             unsigned: false
     manyToOne:
-        idclient:
+        client:
             targetEntity: Client
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idClient:
+                client:
                     referencedColumnName: id
             orphanRemoval: false
-        idmodele:
+        modele:
             targetEntity: Modele
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idModele:
+                modele:
                     referencedColumnName: id
             orphanRemoval: false
-        idmesure:
+        mesure:
             targetEntity: Mesure
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idMesure:
+                mesure:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

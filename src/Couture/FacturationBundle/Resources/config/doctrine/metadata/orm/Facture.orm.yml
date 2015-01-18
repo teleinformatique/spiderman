@@ -2,9 +2,12 @@ Facture:
     type: entity
     table: facture
     indexes:
-        fk_facture_spiderman1_idx:
+        fk_facture_couture1_idx:
             columns:
-                - idspiderman
+                - couture
+        fk_facture_etatfacture1_idx:
+            columns:
+                - etatfacture
     id:
         id:
             type: integer
@@ -17,11 +20,6 @@ Facture:
         date:
             type: date
             nullable: true
-        payee:
-            type: integer
-            nullable: true
-            unsigned: false
-            comment: 'payee? '
         datemod:
             type: datetime
             nullable: true
@@ -33,14 +31,28 @@ Facture:
             nullable: true
             unsigned: false
             column: idUser
+        avance:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
     manyToOne:
-        idspiderman:
+        couture:
             targetEntity: Couture
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idspiderman:
+                couture:
+                    referencedColumnName: id
+            orphanRemoval: false
+        etatfacture:
+            targetEntity: Etatfacture
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etatfacture:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

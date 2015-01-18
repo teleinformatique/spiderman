@@ -3,11 +3,13 @@
 namespace Couture\CoutureBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
  *
- * @ORM\Table(name="image", indexes={@ORM\Index(name="fk_image_modele1_idx", columns={"idModele"})})
+ * @ORM\Table(name="image")
  * @ORM\Entity
  */
 class Image
@@ -55,16 +57,241 @@ class Image
      * @ORM\Column(name="idUser", type="integer", nullable=true)
      */
     private $iduser;
+    
+    /**
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"image/png", "image/jpeg", "image/gif"},
+     *     mimeTypesMessage = "Choisissez un fichier image ( png , gif, ou jpeg) valide."
+     * )
+     */
+    private $file;
+    
+    private $tempFilename;
+    
+    
+    public function __construct() {
+        $this->datec = new \DateTime();
+    }
+    
+    // On modifie le setter de File, pour prendre en compte l'upload 
+    // d'un fichier lorsqu'il en existe déjà un autre
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+        // On vérifie si on avait déjà un fichier pour cette entité
+        if (null !== $this->path) {
+        // On sauvegarde l'extension du fichier pour le supprimer plus tard
+        $this->tempFilename = $this->path;
+        // On réinitialise les valeurs des attributs url et alt
+        $this->path = null;
+        //$this->alt = null;
+        }
+    }
+    
+    /**
+    * @ORM\PrePersist()
+    * @ORM\PreUpdate()
+    */
+    public function preUpload()
+    {
+        // Si jamais il n'y a pas de fichier (champ facultatif)
+        if (null === $this->file) {
+        return;
+        }
+        // Le nom du fichier est son id, on doit juste stocker également son extension
+        // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
+        $this->path = $this->file->guessExtension();
+        // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
+        //$this->alt = $this->file->getClientOriginalName();
+    }
+    
+    /**
+    * @ORM\PostPersist()
+    * @ORM\PostUpdate()
+    */
+    public function upload()
+    {
+        // Si jamais il n'y a pas de fichier (champ facultatif)
+        if (null === $this->file) {
+        return;
+        }
+        // Si on avait un ancien fichier, on le supprime
+        if (null !== $this->tempFilename) {
+        $oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
+        if (file_exists($oldFile)) {
+        unlink($oldFile);
+        }
+        }
+        // On déplace le fichier envoyé dans le répertoire de notre choix
+        $this->file->move(
+        $this->getUploadRootDir(), // Le répertoire de destination
+        $this->id.'.'.$this->path   // Le nom du fichier à créer, ici « id.extension »
+        );
+    }
+    /**
+    * @ORM\PreRemove()
+    */
+    public function preRemoveUpload()
+    {
+        // On sauvegarde temporairement le nom du fichier, car il dépend de l'id
+        $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->path;
+    }
+    
+    /**
+    * @ORM\PostRemove()
+    */
+    public function removeUpload()
+    {
+        // En PostRemove, on n'a pas accès à l'id, on utilise notre nom sauvegardé
+        if (file_exists($this->tempFilename)) {
+            // On supprime le fichier
+            unlink($this->tempFilename);
+        }
+    }
+    
+    public function getUploadDir()
+    {
+        // On retourne le chemin relatif vers l'image pour un navigateur
+        return 'uploads/img';
+    }
+    protected function getUploadRootDir()
+    {
+        // On retourne le chemin relatif vers l'image pour notre code PHP
+        return __DIR__.'/../../../../../web/'.$this->getUploadDir();
+    }
+    
+    public function getWebPath()
+    {
+        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getPath();
+    }
+
+
 
     /**
-     * @var \Modele
+     * Get id
      *
-     * @ORM\ManyToOne(targetEntity="Modele")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idModele", referencedColumnName="id")
-     * })
+     * @return integer 
      */
-    private $idmodele;
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    /**
+     * Set libelle
+     *
+     * @param string $libelle
+     * @return Image
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
 
+        return $this;
+    }
+
+    /**
+     * Get libelle
+     *
+     * @return string 
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Image
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set datec
+     *
+     * @param \DateTime $datec
+     * @return Image
+     */
+    public function setDatec($datec)
+    {
+        $this->datec = $datec;
+
+        return $this;
+    }
+
+    /**
+     * Get datec
+     *
+     * @return \DateTime 
+     */
+    public function getDatec()
+    {
+        return $this->datec;
+    }
+
+    /**
+     * Set datemod
+     *
+     * @param \DateTime $datemod
+     * @return Image
+     */
+    public function setDatemod($datemod)
+    {
+        $this->datemod = $datemod;
+
+        return $this;
+    }
+
+    /**
+     * Get datemod
+     *
+     * @return \DateTime 
+     */
+    public function getDatemod()
+    {
+        return $this->datemod;
+    }
+
+    /**
+     * Set iduser
+     *
+     * @param integer $iduser
+     * @return Image
+     */
+    public function setIduser($iduser)
+    {
+        $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    /**
+     * Get iduser
+     *
+     * @return integer 
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
+    }
+    
+    
 }

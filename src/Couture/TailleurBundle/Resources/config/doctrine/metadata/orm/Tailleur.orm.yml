@@ -54,11 +54,6 @@ Tailleur:
             nullable: true
             unsigned: false
             comment: 'est utilisateur ou pas'
-        tailleurcol:
-            type: string
-            nullable: true
-            length: 45
-            fixed: false
         datemod:
             type: datetime
             nullable: true

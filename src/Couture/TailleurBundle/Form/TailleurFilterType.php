@@ -24,7 +24,6 @@ class TailleurFilterType extends AbstractType
             ->add('dateembauche', 'filter_date_range')
             ->add('salaire', 'filter_number_range')
             ->add('user', 'filter_number_range')
-            ->add('tailleurcol', 'filter_text')
             ->add('datemod', 'filter_date_range')
             ->add('iduser', 'filter_number_range')
             ->add('datec', 'filter_date_range')

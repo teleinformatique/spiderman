@@ -85,13 +85,6 @@ class Tailleur
     private $user;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tailleurcol", type="string", length=45, nullable=true)
-     */
-    private $tailleurcol;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="datemod", type="datetime", nullable=true)
@@ -329,29 +322,6 @@ class Tailleur
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set tailleurcol
-     *
-     * @param string $tailleurcol
-     * @return Tailleur
-     */
-    public function setTailleurcol($tailleurcol)
-    {
-        $this->tailleurcol = $tailleurcol;
-
-        return $this;
-    }
-
-    /**
-     * Get tailleurcol
-     *
-     * @return string 
-     */
-    public function getTailleurcol()
-    {
-        return $this->tailleurcol;
     }
 
     /**

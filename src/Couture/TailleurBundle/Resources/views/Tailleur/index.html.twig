@@ -42,7 +42,6 @@
                 {{ form_row(filterForm.dateembauche) }}
                 {{ form_row(filterForm.salaire) }}
                 {{ form_row(filterForm.user) }}
-                {{ form_row(filterForm.tailleurcol) }}
                 {{ form_row(filterForm.datemod) }}
                 {{ form_row(filterForm.iduser) }}
                 {{ form_row(filterForm.datec) }}
@@ -71,7 +70,6 @@
             <th>Dateembauche</th>
             <th>Salaire</th>
             <th>User</th>
-            <th>Tailleurcol</th>
             <th>Datemod</th>
             <th>Iduser</th>
             <th>Datec</th>
@@ -91,7 +89,6 @@
             <td>{% if entity.dateembauche %}{{ entity.dateembauche|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{{ entity.salaire }}</td>
             <td>{{ entity.user }}</td>
-            <td>{{ entity.tailleurcol }}</td>
             <td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{{ entity.iduser }}</td>
             <td>{% if entity.datec %}{{ entity.datec|date('Y-m-d H:i:s') }}{% endif %}</td>

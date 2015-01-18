@@ -90,7 +90,7 @@ class __TwigTemplate_c4eba0e3d881473e0b616b7fc39cab79fb99d85de54a45df81f737f11ec
 
             <form class=\"well\" action=\"";
         // line 34
-        echo $this->env->getExtension('routing')->getPath("couture");
+        echo $this->env->getExtension('routing')->getPath("modele");
         echo "\" method=\"get\" ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["filterForm"]) ? $context["filterForm"] : $this->getContext($context, "filterForm")), 'enctype');
         echo ">
@@ -164,7 +164,7 @@ class __TwigTemplate_c4eba0e3d881473e0b616b7fc39cab79fb99d85de54a45df81f737f11ec
             echo "        <tr>
             <td><a href=\"";
             // line 68
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("couture_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("modele_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "id", array()), "html", null, true);
             echo "</a></td>
@@ -195,7 +195,7 @@ class __TwigTemplate_c4eba0e3d881473e0b616b7fc39cab79fb99d85de54a45df81f737f11ec
             <td>
         <a class=\"btn btn-mini\" href=\"";
             // line 75
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("couture_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("modele_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">
             ";
             // line 76
@@ -204,7 +204,7 @@ class __TwigTemplate_c4eba0e3d881473e0b616b7fc39cab79fb99d85de54a45df81f737f11ec
         </a>
         <a class=\"btn btn-mini\" href=\"";
             // line 78
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("couture_edit", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("modele_edit", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">
             ";
             // line 79
@@ -232,7 +232,7 @@ class __TwigTemplate_c4eba0e3d881473e0b616b7fc39cab79fb99d85de54a45df81f737f11ec
         <div class=\"span8\">
     <a class=\"btn btn-primary likepaginator\" href=\"";
         // line 92
-        echo $this->env->getExtension('routing')->getPath("couture_new");
+        echo $this->env->getExtension('routing')->getPath("modele_new");
         echo "\">
             ";
         // line 93

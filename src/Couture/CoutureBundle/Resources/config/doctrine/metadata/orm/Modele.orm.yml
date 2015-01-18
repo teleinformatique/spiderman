@@ -1,6 +1,10 @@
 Modele:
     type: entity
     table: modele
+    indexes:
+        fk_modele_image1_idx:
+            columns:
+                - image
     id:
         id:
             type: integer
@@ -31,4 +35,14 @@ Modele:
         datemod:
             type: datetime
             nullable: true
+    manyToOne:
+        image:
+            targetEntity: Image
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                image:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

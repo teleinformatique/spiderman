@@ -136,32 +136,28 @@ class __TwigTemplate_7b61ad0fedf32aad73b01c9338a77ba752e8fae116a89e38852026944ce
         echo "
                 ";
         // line 45
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["filterForm"]) ? $context["filterForm"] : $this->getContext($context, "filterForm")), "tailleurcol", array()), 'row');
-        echo "
-                ";
-        // line 46
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["filterForm"]) ? $context["filterForm"] : $this->getContext($context, "filterForm")), "datemod", array()), 'row');
         echo "
                 ";
-        // line 47
+        // line 46
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["filterForm"]) ? $context["filterForm"] : $this->getContext($context, "filterForm")), "iduser", array()), 'row');
         echo "
                 ";
-        // line 48
+        // line 47
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["filterForm"]) ? $context["filterForm"] : $this->getContext($context, "filterForm")), "datec", array()), 'row');
         echo "
                 ";
-        // line 49
+        // line 48
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["filterForm"]) ? $context["filterForm"] : $this->getContext($context, "filterForm")), 'rest');
         echo "
 
                 <p>
                     <button type=\"submit\" name=\"filter_action\" value=\"filter\">";
-        // line 52
+        // line 51
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("views.index.filter", array(), "JordiLlonchCrudGeneratorBundle"), "html", null, true);
         echo "</button>
                     <button type=\"submit\" name=\"filter_action\" value=\"reset\">";
-        // line 53
+        // line 52
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("views.index.reset", array(), "JordiLlonchCrudGeneratorBundle"), "html", null, true);
         echo "</button>
                 </p>
@@ -184,104 +180,99 @@ class __TwigTemplate_7b61ad0fedf32aad73b01c9338a77ba752e8fae116a89e38852026944ce
             <th>Dateembauche</th>
             <th>Salaire</th>
             <th>User</th>
-            <th>Tailleurcol</th>
             <th>Datemod</th>
             <th>Iduser</th>
             <th>Datec</th>
             <th>";
-        // line 78
+        // line 76
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("views.index.actions", array(), "JordiLlonchCrudGeneratorBundle"), "html", null, true);
         echo "</th>
         </tr>
     </thead>
     <tbody>
     ";
-        // line 82
+        // line 80
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) ? $context["entities"] : $this->getContext($context, "entities")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 83
+            // line 81
             echo "        <tr>
             <td><a href=\"";
-            // line 84
+            // line 82
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("tailleur_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "id", array()), "html", null, true);
             echo "</a></td>
             <td>";
-            // line 85
+            // line 83
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "nom", array()), "html", null, true);
             echo "</td>
             <td>";
-            // line 86
+            // line 84
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "prenom", array()), "html", null, true);
             echo "</td>
             <td>";
-            // line 87
+            // line 85
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "telephone", array()), "html", null, true);
             echo "</td>
             <td>";
-            // line 88
+            // line 86
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "email", array()), "html", null, true);
             echo "</td>
             <td>";
-            // line 89
+            // line 87
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "login", array()), "html", null, true);
             echo "</td>
             <td>";
-            // line 90
+            // line 88
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "password", array()), "html", null, true);
             echo "</td>
             <td>";
-            // line 91
+            // line 89
             if ($this->getAttribute($context["entity"], "dateembauche", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "dateembauche", array()), "Y-m-d H:i:s"), "html", null, true);
             }
             echo "</td>
             <td>";
-            // line 92
+            // line 90
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "salaire", array()), "html", null, true);
             echo "</td>
             <td>";
-            // line 93
+            // line 91
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "user", array()), "html", null, true);
             echo "</td>
             <td>";
-            // line 94
-            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "tailleurcol", array()), "html", null, true);
-            echo "</td>
-            <td>";
-            // line 95
+            // line 92
             if ($this->getAttribute($context["entity"], "datemod", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "datemod", array()), "Y-m-d H:i:s"), "html", null, true);
             }
             echo "</td>
             <td>";
-            // line 96
+            // line 93
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "iduser", array()), "html", null, true);
             echo "</td>
             <td>";
-            // line 97
+            // line 94
             if ($this->getAttribute($context["entity"], "datec", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "datec", array()), "Y-m-d H:i:s"), "html", null, true);
             }
             echo "</td>
             <td>
         <a class=\"btn btn-mini\" href=\"";
-            // line 99
+            // line 96
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("tailleur_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">
             ";
-            // line 100
+            // line 97
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("views.actions.show", array(), "JordiLlonchCrudGeneratorBundle"), "html", null, true);
             echo "
         </a>
         <a class=\"btn btn-mini\" href=\"";
-            // line 102
+            // line 99
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("tailleur_edit", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">
             ";
-            // line 103
+            // line 100
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("views.actions.edit", array(), "JordiLlonchCrudGeneratorBundle"), "html", null, true);
             echo "
         </a>            </td>
@@ -291,25 +282,25 @@ class __TwigTemplate_7b61ad0fedf32aad73b01c9338a77ba752e8fae116a89e38852026944ce
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 107
+        // line 104
         echo "    </tbody>
 </table>
     </div>
 
     <div class=\"span4\">
     ";
-        // line 112
+        // line 109
         echo (isset($context["pagerHtml"]) ? $context["pagerHtml"] : $this->getContext($context, "pagerHtml"));
         echo "
     </div>
 
         <div class=\"span8\">
     <a class=\"btn btn-primary likepaginator\" href=\"";
-        // line 116
+        // line 113
         echo $this->env->getExtension('routing')->getPath("tailleur_new");
         echo "\">
             ";
-        // line 117
+        // line 114
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("views.index.createnew", array(), "JordiLlonchCrudGeneratorBundle"), "html", null, true);
         echo " Tailleur
         </a>
@@ -331,6 +322,6 @@ class __TwigTemplate_7b61ad0fedf32aad73b01c9338a77ba752e8fae116a89e38852026944ce
 
     public function getDebugInfo()
     {
-        return array (  313 => 117,  309 => 116,  302 => 112,  295 => 107,  285 => 103,  281 => 102,  276 => 100,  272 => 99,  265 => 97,  261 => 96,  255 => 95,  251 => 94,  247 => 93,  243 => 92,  237 => 91,  233 => 90,  229 => 89,  225 => 88,  221 => 87,  217 => 86,  213 => 85,  207 => 84,  204 => 83,  200 => 82,  193 => 78,  165 => 53,  161 => 52,  155 => 49,  151 => 48,  147 => 47,  143 => 46,  139 => 45,  135 => 44,  131 => 43,  127 => 42,  123 => 41,  119 => 40,  115 => 39,  111 => 38,  107 => 37,  103 => 36,  99 => 35,  93 => 34,  81 => 25,  74 => 20,  68 => 17,  65 => 16,  63 => 15,  57 => 12,  51 => 8,  48 => 7,  40 => 4,  37 => 3,  11 => 1,);
+        return array (  304 => 114,  300 => 113,  293 => 109,  286 => 104,  276 => 100,  272 => 99,  267 => 97,  263 => 96,  256 => 94,  252 => 93,  246 => 92,  242 => 91,  238 => 90,  232 => 89,  228 => 88,  224 => 87,  220 => 86,  216 => 85,  212 => 84,  208 => 83,  202 => 82,  199 => 81,  195 => 80,  188 => 76,  161 => 52,  157 => 51,  151 => 48,  147 => 47,  143 => 46,  139 => 45,  135 => 44,  131 => 43,  127 => 42,  123 => 41,  119 => 40,  115 => 39,  111 => 38,  107 => 37,  103 => 36,  99 => 35,  93 => 34,  81 => 25,  74 => 20,  68 => 17,  65 => 16,  63 => 15,  57 => 12,  51 => 8,  48 => 7,  40 => 4,  37 => 3,  11 => 1,);
     }
 }
