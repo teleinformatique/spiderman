@@ -125,6 +125,8 @@ class FactureController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Facture();
+        $etatFacture = new \Couture\FacturationBundle\Entity\Etatfacture();
+        $entity->getEtatfacture()->add($etatFacture);
         $form = $this->createForm(new FactureType(), $entity);
         $form->bind($request);
 

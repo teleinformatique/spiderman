@@ -59,115 +59,60 @@ class Image
     private $iduser;
     
     /**
-     * @Assert\File(
-     *     maxSize = "1024k",
-     *     mimeTypes = {"image/png", "image/jpeg", "image/gif"},
-     *     mimeTypesMessage = "Choisissez un fichier image ( png , gif, ou jpeg) valide."
-     * )
+     * @Assert\File(maxSize="6000000")
      */
-    private $file;
-    
-    private $tempFilename;
+    public $file;
     
     
     public function __construct() {
         $this->datec = new \DateTime();
     }
     
-    // On modifie le setter de File, pour prendre en compte l'upload 
-    // d'un fichier lorsqu'il en existe déjà un autre
-    public function setFile(UploadedFile $file)
+    public function getAbsolutePath()
     {
-        $this->file = $file;
-        // On vérifie si on avait déjà un fichier pour cette entité
-        if (null !== $this->path) {
-        // On sauvegarde l'extension du fichier pour le supprimer plus tard
-        $this->tempFilename = $this->path;
-        // On réinitialise les valeurs des attributs url et alt
-        $this->path = null;
-        //$this->alt = null;
-        }
-    }
-    
-    /**
-    * @ORM\PrePersist()
-    * @ORM\PreUpdate()
-    */
-    public function preUpload()
-    {
-        // Si jamais il n'y a pas de fichier (champ facultatif)
-        if (null === $this->file) {
-        return;
-        }
-        // Le nom du fichier est son id, on doit juste stocker également son extension
-        // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
-        $this->path = $this->file->guessExtension();
-        // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
-        //$this->alt = $this->file->getClientOriginalName();
-    }
-    
-    /**
-    * @ORM\PostPersist()
-    * @ORM\PostUpdate()
-    */
-    public function upload()
-    {
-        // Si jamais il n'y a pas de fichier (champ facultatif)
-        if (null === $this->file) {
-        return;
-        }
-        // Si on avait un ancien fichier, on le supprime
-        if (null !== $this->tempFilename) {
-        $oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
-        if (file_exists($oldFile)) {
-        unlink($oldFile);
-        }
-        }
-        // On déplace le fichier envoyé dans le répertoire de notre choix
-        $this->file->move(
-        $this->getUploadRootDir(), // Le répertoire de destination
-        $this->id.'.'.$this->path   // Le nom du fichier à créer, ici « id.extension »
-        );
-    }
-    /**
-    * @ORM\PreRemove()
-    */
-    public function preRemoveUpload()
-    {
-        // On sauvegarde temporairement le nom du fichier, car il dépend de l'id
-        $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->path;
-    }
-    
-    /**
-    * @ORM\PostRemove()
-    */
-    public function removeUpload()
-    {
-        // En PostRemove, on n'a pas accès à l'id, on utilise notre nom sauvegardé
-        if (file_exists($this->tempFilename)) {
-            // On supprime le fichier
-            unlink($this->tempFilename);
-        }
-    }
-    
-    public function getUploadDir()
-    {
-        // On retourne le chemin relatif vers l'image pour un navigateur
-        return 'uploads/img';
-    }
-    protected function getUploadRootDir()
-    {
-        // On retourne le chemin relatif vers l'image pour notre code PHP
-        return __DIR__.'/../../../../../web/'.$this->getUploadDir();
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
     }
     
     public function getWebPath()
     {
-        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getPath();
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
     }
-
-
-
+    
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+    
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads/documents';
+    }
+    
+    
+     public function upload()
+    {
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->file) {
+            return;
+    }
+        // utilisez le nom de fichier original ici mais
+        // vous devriez « l'assainir » pour au moins éviter
+        // quelconques problèmes de sécurité
+        // la méthode « move » prend comme arguments le répertoire cible et
+        // le nom de fichier cible où le fichier doit être déplacé
+    
+    
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+        // définit la propriété « path » comme étant le nom de fichier où vous
+        // avez stocké le fichier
+        $this->path = $this->file->getClientOriginalName();
+        // « nettoie » la propriété « file » comme vous n'en aurez plus besoin
+        $this->file = null;
+    }
+    
     /**
      * Get id
      *

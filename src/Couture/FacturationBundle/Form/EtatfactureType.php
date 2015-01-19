@@ -25,6 +25,7 @@ class EtatfactureType extends AbstractType
 
     public function getName()
     {
-        return 'couture_facturationbundle_etatfacture';
+        return 'etatfacture';
+//        return 'couture_facturationbundle_etatfacture';
     }
 }
