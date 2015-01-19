@@ -18,6 +18,10 @@ couture_client:
     type:     annotation
     prefix:   /
 
+#couture_couture:
+#    resource: "@CoutureCoutureBundle/Resources/config/routing.yml"
+#    prefix:   /
+
 app:
     resource: @AppBundle/Controller/
     type:     annotation

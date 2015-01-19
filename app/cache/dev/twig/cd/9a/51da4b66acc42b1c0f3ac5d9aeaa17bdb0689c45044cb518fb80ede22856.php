@@ -66,10 +66,10 @@ class __TwigTemplate_cd9a51da4b66acc42b1c0f3ac5d9aeaa17bdb0689c45044cb518fb80ede
         echo "</span>            </div>
         </div>        <div class=\"control-group\">
             <label class=\"control-label\">Path</label>
-            <div class=\"controls\">                <span class=\"input-xlarge uneditable-input\">";
+            <div class=\"controls\">                <span class=\"input-xlarge uneditable-input\"><img src=";
         // line 20
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "path", array()), "html", null, true);
-        echo "</span>            </div>
+        echo " /></span>            </div>
         </div>        <div class=\"control-group\">
             <label class=\"control-label\">Datec</label>
             <div class=\"controls\">                <span class=\"input-xlarge uneditable-input\">";

@@ -1,0 +1,11 @@
+couture_client_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: CoutureClientBundle:Default:index }
+
+
+
+image_upload:
+    pattern: /image-upload
+    defaults: { _controller: CoutureCoutureBundle:Image:upload }
+
+

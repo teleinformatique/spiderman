@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
 class FactureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -17,7 +18,12 @@ class FactureType extends AbstractType
             ->add('iduser')
             ->add('avance')
             ->add('couture')
-            ->add('etatfacture')
+            ->add('etatfacture','entity', array(
+                'class' => 'CoutureFacturationBundle:Etatfacture',
+                'property' => 'libelle',
+                'expanded' => false,
+                'multiple' => false,
+            ))
         ;
     }
 

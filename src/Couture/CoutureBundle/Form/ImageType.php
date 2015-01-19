@@ -12,7 +12,7 @@ class ImageType extends AbstractType
     {
         $builder
             ->add('libelle')
-            ->add('path', 'file')
+            ->add('path','file')
             ->add('iduser')
         ;
     }
@@ -26,6 +26,7 @@ class ImageType extends AbstractType
 
     public function getName()
     {
-        return 'couture_couturebundle_image';
+        return 'image';
+//        return 'couture_couturebundle_image';
     }
 }

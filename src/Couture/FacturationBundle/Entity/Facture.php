@@ -75,6 +75,8 @@ class Facture
      * })
      */
     private $etatfacture;
+    
+   
 
 
 
@@ -226,6 +228,8 @@ class Facture
         return $this->couture;
     }
 
+     
+    
     /**
      * Set etatfacture
      *
