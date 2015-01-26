@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Couture\CoutureBundle\CoutureCoutureBundle(),
             new Couture\FacturationBundle\CoutureFacturationBundle(),
             new Couture\TailleurBundle\CoutureTailleurBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

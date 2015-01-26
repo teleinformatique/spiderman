@@ -17,12 +17,15 @@ class TailleurType extends AbstractType
             ->add('email')
             ->add('login')
             ->add('password')
-            ->add('dateembauche')
+            ->add('dateembauche', 'date', array(
+                        'label'  => 'Date d\'embauche'))
             ->add('salaire')
-            ->add('user')
-            ->add('datemod')
-            ->add('iduser')
-            ->add('datec')
+            ->add('user', 'choice', array(
+                        'choices'   => array('0' => 'Non', '1' => 'Oui'),
+                        'required'  => true,))
+            //->add('datemod')
+            //->add('iduser')
+            //->add('datec')
         ;
     }
 
