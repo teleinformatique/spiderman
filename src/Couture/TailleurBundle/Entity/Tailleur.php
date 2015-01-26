@@ -104,6 +104,11 @@ class Tailleur
      * @ORM\Column(name="datec", type="datetime", nullable=true)
      */
     private $datec;
+    
+    
+    public function __construct() {
+        $this->datec = new \DateTime();
+    }
 
 
 

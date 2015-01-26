@@ -17,6 +17,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Pagerfanta\\' => array($vendorDir . '/pagerfanta/pagerfanta/src'),
     'Lexik\\Bundle\\FormFilterBundle' => array($vendorDir . '/lexik/form-filter-bundle'),
+    'Knp\\Menu\\' => array($vendorDir . '/knplabs/knp-menu/src'),
     'JordiLlonch\\Bundle\\CrudGeneratorBundle' => array($vendorDir . '/jordillonch/crud-generator'),
     'Incenteev\\ParameterHandler' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
