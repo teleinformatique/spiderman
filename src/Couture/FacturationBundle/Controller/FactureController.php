@@ -123,17 +123,29 @@ class FactureController extends Controller
      * @Template("CoutureFacturationBundle:Facture:new.html.twig")
      */
     public function createAction(Request $request)
+    //public function createAction(Couture $couture, $avance)
     {
+        
         $entity  = new Facture();
-        $etatFacture = new \Couture\FacturationBundle\Entity\Etatfacture();
-        $entity->getEtatfacture()->add($etatFacture);
+        
+        /*if($couture != null)
+        {
+            $entity->setCouture($couture);
+        }*/
         $form = $this->createForm(new FactureType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $etat = $em->getRepository('CoutureFacturationBundle:Etatfacture')->find(1);
+            $entity->setEtatfacture($etat);
+            $entity->setIduser(0);
             $em->persist($entity);
+            
             $em->flush();
+            
+            
             $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
 
             return $this->redirect($this->generateUrl('facture_show', array('id' => $entity->getId())));
@@ -296,4 +308,6 @@ class FactureController extends Controller
             ->getForm()
         ;
     }
+    
+   
 }

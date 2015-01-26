@@ -16,8 +16,8 @@ class ClientType extends AbstractType
             ->add('telephone')
             ->add('email')
             ->add('adresse')
-            ->add('datec')
-            ->add('iduser')
+            //->add('datec')
+            //->add('iduser')
         ;
     }
 

@@ -3,6 +3,8 @@
 namespace Couture\FacturationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Couture\CoutureBundle\Entity\Couture as Couture;
+use Couture\FacturationBundle\Entity\Etatfacture as Etatfacture;
 
 /**
  * Facture
@@ -78,7 +80,10 @@ class Facture
     
    
 
-
+    public function __construct() {
+        $this->datec = new \DateTime();
+        
+    }
 
     /**
      * Get id
@@ -211,7 +216,7 @@ class Facture
      * @param \Couture\FacturationBundle\Entity\Couture $couture
      * @return Facture
      */
-    public function setCouture(\Couture\FacturationBundle\Entity\Couture $couture = null)
+    public function setCouture(Couture $couture = null)
     {
         $this->couture = $couture;
 
@@ -236,7 +241,7 @@ class Facture
      * @param \Couture\FacturationBundle\Entity\Etatfacture $etatfacture
      * @return Facture
      */
-    public function setEtatfacture(\Couture\FacturationBundle\Entity\Etatfacture $etatfacture = null)
+    public function setEtatfacture(Etatfacture $etatfacture = null)
     {
         $this->etatfacture = $etatfacture;
 

@@ -127,10 +127,10 @@ class ImageController extends Controller
         $entity  = new Image();
         $form = $this->createForm(new ImageType(), $entity);
         $form->bind($request);
+        
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity -> upload();
             $em->persist($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.create.success');

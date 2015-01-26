@@ -130,6 +130,11 @@ class ModeleController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            /*
+             * 
+             */
+            $this->modificationLibelleImage($entity);
+            
             $em->persist($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
@@ -235,6 +240,8 @@ class ModeleController extends Controller
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+            
+            $this->modificationLibelleImage($entity);
             $em->persist($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
@@ -293,5 +300,21 @@ class ModeleController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    /*
+     * Pour modifier le libellé des images et mettre les idUser
+     */
+    private function modificationLibelleImage(Modele $entity)
+    {
+        /*
+        * Si un modèle a été sauvé sans image
+        */
+       if ($entity->getImage() != null)
+       {
+           $entity->getImage()->setLibelle($entity->getLibelle());
+           $entity->getImage()->setIduser(0);
+           $entity->setIduser(0);
+       }
     }
 }

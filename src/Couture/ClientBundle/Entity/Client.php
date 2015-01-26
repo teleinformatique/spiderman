@@ -69,6 +69,20 @@ class Client
      * @ORM\Column(name="idUser", type="integer", nullable=true)
      */
     private $iduser;
+    
+    private $infosClient;
+    
+    
+    public function __construct() {
+        $this->datec = new \DateTime();
+    }
+    
+    public function getInfosClient()
+    {
+        $this->infosClient = $this->prenom.' '.$this->nom.' '.$this->telephone;
+        
+        return $this->infosClient;
+    }
 
 
 

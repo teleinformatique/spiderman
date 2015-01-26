@@ -7,5 +7,7 @@ couture_client_homepage:
 image_upload:
     pattern: /image-upload
     defaults: { _controller: CoutureCoutureBundle:Image:upload }
+    
+
 
 

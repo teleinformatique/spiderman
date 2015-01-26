@@ -57,5 +57,6 @@
             <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
         </form>
     </div>
+        <a href="{{ path('facture_new', { 'id': entity.id }) }}"> Générer la facture </a>
 </div>
 {% endblock %}

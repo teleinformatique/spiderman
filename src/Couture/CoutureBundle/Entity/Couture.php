@@ -3,6 +3,7 @@
 namespace Couture\CoutureBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Couture\ClientBundle\Entity\Client as Client;
 
 /**
  * Couture
@@ -100,15 +101,32 @@ class Couture
     /**
      * @var \Mesure
      *
-     * @ORM\ManyToOne(targetEntity="Mesure")
+     * @ORM\ManyToOne(targetEntity="Mesure", cascade={"persist", "remove"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="mesure", referencedColumnName="id")
      * })
      */
     private $mesure;
+    
+    private $infosCouture;
+    
+    private $avance ; 
+    
+    function getAvance() {
+        return $this->avance;
+    }
 
+    function setAvance($avance) {
+        $this->avance = $avance;
+    }
 
-
+    
+    public function __construct() {
+        $this->datec = new \DateTime();
+        $this->etat = 0;
+    }
+    
+    
     /**
      * Get id
      *
@@ -309,7 +327,7 @@ class Couture
      * @param \Couture\CoutureBundle\Entity\Client $client
      * @return Couture
      */
-    public function setClient(\Couture\CoutureBundle\Entity\Client $client = null)
+    public function setClient(Client $client = null)
     {
         $this->client = $client;
 
@@ -324,6 +342,18 @@ class Couture
     public function getClient()
     {
         return $this->client;
+    }
+    
+    public function getInfosCouture()
+    {
+        $infosClient = $this->client->getInfosClient();
+        $modele = $this->getModele()->getLibelle() ; 
+//        $date = date('d / M / Y',$this->getDatec());
+//        $date = date('d/M/Y', $date);
+        $date = $this->getDatec()->format('d/M/Y');
+//        $date = strtotime($date);
+        $this->infosCouture = $infosClient.' '.$modele.' '.$date;
+        return $this->infosCouture;
     }
 
     /**
