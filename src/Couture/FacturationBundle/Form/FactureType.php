@@ -13,17 +13,20 @@ class FactureType extends AbstractType
     {
         $builder
             ->add('date')
-            ->add('datemod')
-            ->add('datec')
-            ->add('iduser')
+            //->add('datemod')
+            //->add('datec')
+            //->add('iduser')
             ->add('avance')
-            ->add('couture')
-            ->add('etatfacture','entity', array(
+            ->add('couture','entity', array(
+                'class' => 'CoutureCoutureBundle:Couture',
+                'property' => 'infosCouture',
+            ))
+            /*->add('etatfacture','entity', array(
                 'class' => 'CoutureFacturationBundle:Etatfacture',
                 'property' => 'libelle',
                 'expanded' => false,
                 'multiple' => false,
-            ))
+            ))*/
         ;
     }
 

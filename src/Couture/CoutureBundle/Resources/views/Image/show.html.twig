@@ -17,7 +17,7 @@
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.libelle }}</span>            </div>
         </div>        <div class="control-group">
             <label class="control-label">Path</label>
-            <div class="controls">                <span class="input-xlarge uneditable-input"><img src={{ entity.path }} /></span>            </div>
+            <div class="controls">                <span class="input-xlarge uneditable-input"><img src={{ asset (entity.getWebPath()) }} /></span>            </div>
         </div>        <div class="control-group">
             <label class="control-label">Datec</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.datec|date('Y-m-d H:i:s') }}</span>            </div>

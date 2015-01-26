@@ -59,7 +59,7 @@ class Modele
     /**
      * @var \Image
      *
-     * @ORM\ManyToOne(targetEntity="Image", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Image", cascade={"persist", "remove"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="image", referencedColumnName="id")
      * })
