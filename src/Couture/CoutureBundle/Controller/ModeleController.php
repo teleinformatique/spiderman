@@ -12,6 +12,7 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrapView;
 
 use Couture\CoutureBundle\Entity\Modele;
+use Couture\CoutureBundle\Entity\Image as Image;
 use Couture\CoutureBundle\Form\ModeleType;
 use Couture\CoutureBundle\Form\ModeleFilterType;
 
@@ -175,14 +176,20 @@ class ModeleController extends Controller
      */
     public function showAction($id)
     {
+        //$image = new Image();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CoutureCoutureBundle:Modele')->find($id);
+        
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Modele entity.');
         }
-
+        
+        $idImage = $entity->getImage();
+        $image = $em->getRepository('CoutureCoutureBundle:Image')->find($idImage);
+        $entity->setImage($image) ;
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return array(

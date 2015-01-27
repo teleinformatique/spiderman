@@ -27,7 +27,10 @@
         </div>        <div class="control-group">
             <label class="control-label">Datemod</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.datemod|date('Y-m-d H:i:s') }}</span>            </div>
-        </div>    </fieldset>
+        </div>    <div class="control-group">
+            <label class="control-label">Aperçu</label>
+            <div class="controls">                <span class="image-responsive"><img src={{ asset ( entity.image.getWebPath()) }} /> </span>            </div>
+        </div>      </fieldset>
 </form>
 
 <div>
