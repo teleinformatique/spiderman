@@ -18,12 +18,27 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
         
-        $menu->addChild('Accueil', array('route' => 'client'));
-
-        $menu->addChild('Client', array('route' => 'client'));
+        $menu->setChildrenAttributes(array('class' => 'nav navbar-nav'));
+        //$menu->setChildrenAttribute('class', 'nav pull-right');
         
-        $menu['Client']->addChild('Ajouter', array('route' => 'client_new'));
-        $menu['Client']->addChild('Lister', array('route' => 'client'));
+        $menu->addChild('Accueil', array('route' => 'client'))
+                ->setLinkAttribute('class', 'navbar-brand')
+                /*->setAttribute('class', 'navbar-brand')*/;
+
+        $menu->addChild('Client', array('route' => 'client'), 'class', 'dropdown-toggle')
+                ->setLinkAttribute('class', 'dropdown-toggle')
+                //->setChildrenAttributes(array('class' => 'nav navbar-nav'))
+                ////->setAttribute('class', 'dropdown-toggle')
+                //->setAttribute('aria-expanded', 'false')
+//                ->setAttribute('role', 'button')
+//                ->setAttribute('dropdown', true)
+//                ->setAttribute('icon', 'icon-user')
+                ;
+        
+        $menu['Client']->addChild('Ajouter', array('route' => 'client_new'))
+                        ->setAttribute('icon', 'icon-edit');
+        $menu['Client']->addChild('Lister', array('route' => 'client'))
+                        ->setAttribute('icon', 'icon-edit');
         
         $menu->addChild('Modèle', array('route' => 'modele'));
         $menu['Modèle']->addChild('Ajouter', array('route' => 'modele_new'));
