@@ -13,7 +13,10 @@ use Pagerfanta\View\TwitterBootstrapView;
 
 use Couture\ClientBundle\Entity\Client;
 use Couture\ClientBundle\Form\ClientType;
-use Couture\ClientBundle\Form\ClientFilterType;
+use Couture\ClientBundle\Form\ClientFilterType ; 
+use Couture\CoutureBundle\Entity\Couture as Couture;
+use Couture\ClientBundle\Entity\ClientRepository as ClientRepository;
+use Doctrine\Common\Util\Debug as Debug;
 
 /**
  * Client controller.
@@ -178,12 +181,41 @@ class ClientController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Client entity.');
         }
-
+        
+        
+        /*
+         * requete pour les dernières factures du client
+         */
+        
+        
+        $req="SELECT f.date, ct.prix "
+                . "FROM CoutureFacturationBundle:Facture f, CoutureCoutureBundle:Couture ct, CoutureClientBundle:Client c "
+                . " WHERE f.couture = ct.id"
+                . " AND ct.client = c.id"
+                . " AND c.id=?1"
+                . " ORDER BY f.date DESC";
+                
+        $query = $em->createQuery($req);
+        $query->setParameter(1, $id);
+//        $query->setParameter(2, 3);
+        $factures = $query->getResult();
+//        return $factures;
+        //var_dump($factures);
+//        print '<pret>';
+//        //Debug::dump($factures);
+//        print '</pret>';
+        //die();
+        
+        /*
+         * Fin de la requete
+         */
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'factures'    => $factures,
         );
     }
 

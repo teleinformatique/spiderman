@@ -1,4 +1,5 @@
-{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+{#% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %#}
+{% extends '::base.html.twig' %}
 
 {% block title %}
 {{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Facture'}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -54,6 +55,9 @@
     <thead>
         <tr>
             <th>Id</th>
+            <!--ajouter par mseye: la colonne couture -->
+            <th>Couture</th>
+            
             <th>Date</th>
             <th>Datemod</th>
             <th>Datec</th>
@@ -66,6 +70,7 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('facture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{% if entity.couture %}{{ entity.couture.getInfosCouture() }}{% endif %}</td>
             <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.datec %}{{ entity.datec|date('Y-m-d H:i:s') }}{% endif %}</td>
