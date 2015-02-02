@@ -49,3 +49,28 @@ body{
 {
     cursor: pointer;
 }
+
+.navbar-inverse .container
+{
+    height: 30px;
+}
+
+.navbar-header
+{
+    width: 9%;
+}
+.navbar-brand {
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 20px;
+    padding: 15px;
+    padding-top: 0;
+}
+
+.navbar-brand img
+{
+    width: 90%;
+    position: relative;
+    top: -25px;
+}
