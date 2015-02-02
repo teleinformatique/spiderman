@@ -14,6 +14,7 @@ use Pagerfanta\View\TwitterBootstrapView;
 use Couture\FacturationBundle\Entity\Facture;
 use Couture\FacturationBundle\Form\FactureType;
 use Couture\FacturationBundle\Form\FactureFilterType;
+use Couture\CoutureBundle\Entity\Couture as Couture; 
 
 /**
  * Facture controller.
@@ -34,7 +35,11 @@ class FactureController extends Controller
         list($filterForm, $queryBuilder) = $this->filter();
 
         list($entities, $pagerHtml) = $this->paginator($queryBuilder);
-
+        
+//        $idCouture = $entities->getCouture();
+//        $couture = $em->getRepository('CoutureCoutureBundle:Couture')->find($idCouture);
+//        $entities->setCouture($couture) ;
+//        
         return array(
             'entities' => $entities,
             'pagerHtml' => $pagerHtml,

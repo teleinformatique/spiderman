@@ -20,6 +20,8 @@ class FactureType extends AbstractType
             ->add('couture','entity', array(
                 'class' => 'CoutureCoutureBundle:Couture',
                 'property' => 'infosCouture',
+//                'allow_add' => true,
+//                'by_reference' => false,
             ))
             /*->add('etatfacture','entity', array(
                 'class' => 'CoutureFacturationBundle:Etatfacture',

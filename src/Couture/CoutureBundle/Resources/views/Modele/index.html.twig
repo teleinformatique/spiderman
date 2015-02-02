@@ -1,17 +1,21 @@
-{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+{#% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %#}
+{% extends '::base.html.twig' %}
 
 {% block title %}
 {{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Modele'}, 'JordiLlonchCrudGeneratorBundle') }}
 {% endblock %}
 
 {% block page %}
+    <div class="row">
+            <div class="span12 alert alert-success"><h1 class="titre">Nos Modèles</h1></div>
+    </div>
 
 <div class="row">
 
-    <div class="span8">
+    <!--div class="span8">
         <h1>{{ 'views.index.list'|trans({'%entity%': 'Modele'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
-    </div>
-    <div class="span2">
+    </div-->
+    <div class="span2 float-right">
         {% if form_errors(filterForm) %}
         <div class="alert alert-block alert-error fade in form-errors">
             {{ form_errors(filterForm) }}

@@ -1,4 +1,5 @@
-{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+{#% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %#}
+{% extends '::base.html.twig' %}
 
 {% block title %}
 {{ parent() }} - {{ 'views.show.show'|trans({'%entity%': 'Modele'}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -6,22 +7,29 @@
 
 {% block page %}
 
-<h1>Modele</h1>
+    <div class="row">
+            <div class="span12 alert alert-success"><h1 class="titre">Modèle : {{ entity.libelle }}</h1></div>
+    </div>
+    <div class="row">
+        <div class="span5 ">
+            <div class="panel panel-success background_infos">
+                    <div class="panel-heading"><h3 class="panel-title">Informations du modèle</h3></div>
+                    <div class="panel-body">
 
 <form class="form-horizontal">
-    <fieldset>        <div class="control-group">
+    <fieldset>        <!--div class="control-group">
             <label class="control-label">Id</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.id }}</span>            </div>
-        </div>        <div class="control-group">
+        </div-->        <div class="control-group">
             <label class="control-label">Libelle</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.libelle }}</span>            </div>
         </div>        <div class="control-group">
             <label class="control-label">Description</label>
-            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.description }}</span>            </div>
+            <div class="controls">                <span class="">pour bcp plus de détails comme test {{ entity.description }}</span>            </div>
         </div>        <div class="control-group">
-            <label class="control-label">Datec</label>
-            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.datec|date('Y-m-d H:i:s') }}</span>            </div>
-        </div>        <div class="control-group">
+            <label class="control-label">Créé le</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.datec|date('d-M-Y') }}</span>            </div>
+        </div>        <!--div class="control-group">
             <label class="control-label">Iduser</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.iduser }}</span>            </div>
         </div>        <div class="control-group">
@@ -30,10 +38,25 @@
         </div>    <div class="control-group">
             <label class="control-label">Aperçu</label>
             <div class="controls">                <span class="image-responsive"><img src={{ asset ( entity.image.getWebPath()) }} /> </span>            </div>
-        </div>      </fieldset>
+        </div-->      </fieldset>
 </form>
+        </div>
+        </div>
+</div>
+        <div class="span6 float-right">
+            <div class="control-group">
+                <!--label class="control-label">Aperçu</label-->
+                <div class="controls">                <span class="image-responsive"><img src={{ asset ( entity.image.getWebPath()) }} /> </span>            </div>
+            </div>
+            
+        </div>
+             
+        
+        </div>
+        
 
-<div>
+<div class="row">
+    <div class="span12 bouton_action">
     <div class="float-left">
         <a class="btn" href="{{ path('modele') }}">
             {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -52,4 +75,5 @@
         </form>
     </div>
 </div>
+            </div>
 {% endblock %}
