@@ -187,6 +187,9 @@ class ClientController extends Controller
          * requete pour les dernières factures du client
          */
         
+        $factures = $entity->getLastFactures($id, 3, $em);
+        $coutures = $entity->getLastCoutures($id, 3, $em);
+        /* ajouter ce matin
         
         $req="SELECT f.date, ct.prix "
                 . "FROM CoutureFacturationBundle:Facture f, CoutureCoutureBundle:Couture ct, CoutureClientBundle:Client c "
@@ -216,6 +219,7 @@ class ClientController extends Controller
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
             'factures'    => $factures,
+            'coutures'    => $coutures,
         );
     }
 

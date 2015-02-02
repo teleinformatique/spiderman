@@ -3,6 +3,7 @@
 namespace Couture\ClientBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Util\Debug as Debug;
 
 /**
  * Client
@@ -256,5 +257,58 @@ class Client
     public function getIduser()
     {
         return $this->iduser;
+    }
+    
+    public function getLastFactures($id, $nombreFactures, $em)
+    {
+        
+        $req="SELECT f.date, ct.prix  "
+                . "FROM CoutureFacturationBundle:Facture f, CoutureCoutureBundle:Couture ct, CoutureClientBundle:Client c "
+                . "WHERE f.couture = ct.id "
+                . "AND ct.client = c.id "
+                . "AND c.id=?1 "
+                . "ORDER BY f.date DESC " ;
+                //. " LIMIT 0, ?2 ";
+                
+
+        $query = $em->createQuery($req);
+        $query->setParameter(1, $id);
+        //$query->setParameter(2, $nombreFactures);
+        $factures = $query->getResult();
+        return $factures;
+        
+//        print '<pret>';
+//        Debug::dump($factures);
+//        print '</pret>';
+////        var_dump($factures);
+//        die;
+                    
+    }
+    
+    public function getLastCoutures($id, $nombreCoutures, $em)
+    {
+        
+        $req="SELECT ct.datec, ct.tissu, m.libelle  "
+                . "FROM CoutureCoutureBundle:Couture ct, CoutureClientBundle:Client c, CoutureCoutureBundle:Modele m  "
+                . "WHERE ct.modele = m.id "
+                . "AND ct.client = c.id "
+                . "AND c.id=?1 "
+//                . "LIMIT 0 , ?2 "
+                . "ORDER BY ct.datec DESC " 
+                ;
+                
+
+        $query = $em->createQuery($req);
+        $query->setParameter(1, $id);
+        //$query->setParameter(2, $nombreCoutures);
+        $coutures = $query->getResult();
+        return $coutures;
+        
+//        print '<pret>';
+//        Debug::dump($coutures);
+//        print '</pret>';
+////        var_dump($factures);
+//        die;
+                    
     }
 }
