@@ -219,4 +219,25 @@ class Modele
     {
         return $this->image;
     }
+    
+    
+    
+    public function getLastCoutures($id, $nombreCoutures, $em)
+    {
+        
+        $req="SELECT ct.datec, ct.prix, ct.tissu "
+                . "FROM CoutureCoutureBundle:Couture ct, CoutureCoutureBundle:Modele m  "
+                . "WHERE ct.modele = m.id "
+                . "AND m.id=?1 "
+//                . "LIMIT 0 , ?2 "
+                . "ORDER BY ct.datec DESC " 
+                ;
+                
+
+        $query = $em->createQuery($req);
+        $query->setParameter(1, $id);
+        //$query->setParameter(2, $nombreCoutures);
+        $coutures = $query->getResult();
+        return $coutures;                    
+    }
 }

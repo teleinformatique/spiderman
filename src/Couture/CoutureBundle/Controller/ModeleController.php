@@ -186,6 +186,8 @@ class ModeleController extends Controller
             throw $this->createNotFoundException('Unable to find Modele entity.');
         }
         
+        $coutures = $entity->getLastCoutures($id, 3, $em);
+        
         $idImage = $entity->getImage();
         $image = $em->getRepository('CoutureCoutureBundle:Image')->find($idImage);
         $entity->setImage($image) ;
@@ -195,6 +197,7 @@ class ModeleController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'coutures'    => $coutures,
         );
     }
 
