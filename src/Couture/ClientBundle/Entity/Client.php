@@ -273,6 +273,7 @@ class Client
 
         $query = $em->createQuery($req);
         $query->setParameter(1, $id);
+        $query->setMaxResults($nombreFactures);
         //$query->setParameter(2, $nombreFactures);
         $factures = $query->getResult();
         return $factures;
@@ -300,6 +301,7 @@ class Client
 
         $query = $em->createQuery($req);
         $query->setParameter(1, $id);
+        $query->setMaxResults($nombreCoutures);
         //$query->setParameter(2, $nombreCoutures);
         $coutures = $query->getResult();
         return $coutures;

@@ -6,8 +6,14 @@
 {% endblock %}
 
 {% block page %}
-
-<h1>Tailleur</h1>
+    <div class="row">
+        <div class="span12 alert alert-success"><h1 class="titre">Tailleur : {{ entity.nom }} {{ entity.prenom }} </h1></div>
+    </div>
+    <div class="row">
+        <div class="span5 ">
+            <div class="panel panel-success background_infos">
+                    <div class="panel-heading"><h3 class="panel-title">Informations du Tailleur</h3></div>
+                    <div class="panel-body">
 
 <form class="form-horizontal">
     <fieldset>        <div class="control-group">
@@ -51,9 +57,65 @@
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.datec|date('Y-m-d H:i:s') }}</span>            </div>
         </div>    </fieldset>
 </form>
-
-<div>
-    <div class="float-left">
+        </div>
+        </div> </div>
+              {% if entity.user == 1 %}
+        <div class="span6">
+            <div class="panel panel-success">
+                    <div class="panel-heading show-details"><h3 class="panel-title">Informations d'authentification<span class="badge">User</span></h3></div>
+                    <div class="panel-body">
+                        
+                        <form class='table-details'>
+                            <fieldset>
+                                <p class="control-group">
+                                    <label class="control-label">E-mail</label>
+                                    <!--div class=""-->
+                                        <span class="">{{ entity.email }}</span>            
+                                    <!--/div-->
+                                </p>
+                                <p class="control-group">
+                                    <label class="control-label">Login</label>
+                                    <!--div class=""-->
+                                        <span class="">{{ entity.login }}</span>            
+                                    <!--/div-->
+                                </p>    
+                                <p class="control-group">
+                                    <label class="control-label">Mot de passe</label>
+                                    <!--div class=""-->
+                                        <span class="">{{ entity.password }}</span>            
+                                    <!--/div-->
+                                </p>
+                                
+                                   
+                            </fieldset>
+                        </form>
+                        
+                        <!--table class="table table-striped table-condensed table-details">
+                            <tr>
+                                <th>Login</th>
+                                <th>Password </th>
+                                <th>E-mail </th>
+                                
+                                
+                            </tr>
+                            
+                          
+                            <tr>
+                                <td><a href="#">{{ entity.login }}</a></td>
+                                <td>{{ entity.password }}</td>
+                                <td>{{ entity.password }}</td>
+                            </tr>
+                          
+                        </table-->
+                    </div>
+                </div>
+        </div>
+    {% endif %}
+</div>
+        
+  
+<div class='row'>
+    <div class="span9 float-left">
         <a class="btn" href="{{ path('tailleur') }}">
             {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
