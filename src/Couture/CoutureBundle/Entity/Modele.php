@@ -236,6 +236,7 @@ class Modele
 
         $query = $em->createQuery($req);
         $query->setParameter(1, $id);
+        $query->setMaxResults($nombreCoutures);
         //$query->setParameter(2, $nombreCoutures);
         $coutures = $query->getResult();
         return $coutures;                    
