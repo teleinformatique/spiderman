@@ -6,19 +6,29 @@
 {% endblock %}
 
 {% block page %}
+    <div class="row">
+        <div class="span12 alert alert-success"><h1 class="titre">Modification Client : {{ entity.prenom }} {{ entity.nom }}  </h1></div>
+    </div>
+    
+<!--h1>{{ 'views.new.creation'|trans({'%entity%': 'Client'}, 'JordiLlonchCrudGeneratorBundle') }}</h1-->
+    <div class='row'>
+    {% form_theme edit_form with ['CoutureClientBundle:Client:perso_input_bootstrap.html.twig'] %}
+    <div class="col-sm-6 col-sm-offset-3">
     
 
-<h1>{{ 'views.edit.edit'|trans({'%entity%': 'Client'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+        <!--h1>{{ 'views.edit.edit'|trans({'%entity%': 'Client'}, 'JordiLlonchCrudGeneratorBundle') }}</h1-->
 
-<form class="well" action="{{ path('client_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    <input type="hidden" name="_method" value="PUT" />
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit" class="btn btn-success">{{ 'views.edit.editbutton'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
-    </p>
-</form>
+        <form class="well" action="{{ path('client_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+            <input type="hidden" name="_method" value="PUT" />
+            {{ form_widget(edit_form) }}
+            <p>
+                <button type="submit" class="btn btn-success">{{ 'views.edit.editbutton'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+            </p>
+        </form>
+    </div>
+</div>
 
-<div>
+<div class='row'>
     <div class="float-left">
         <a class="btn" href="{{ path('client') }}">
             {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
