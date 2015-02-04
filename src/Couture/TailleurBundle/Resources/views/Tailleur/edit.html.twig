@@ -6,8 +6,12 @@
 {% endblock %}
 
 {% block page %}
-
-<h1>{{ 'views.edit.edit'|trans({'%entity%': 'Tailleur'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+    <div class="row">
+        <div class="span12 alert alert-success"><h1 class="titre">Modification données : {{ entity.id }} {{ entity.nom }} {{ entity.prenom }} </h1></div>
+    </div>
+<div class='row'>
+    {% form_theme edit_form with ['CoutureClientBundle:Client:perso_input_bootstrap.html.twig'] %}
+    <div class="col-sm-6 col-sm-offset-3">
 
 <form class="well" action="{{ path('tailleur_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     <input type="hidden" name="_method" value="PUT" />
@@ -16,8 +20,10 @@
         <button type="submit" class="btn btn-success">{{ 'views.edit.editbutton'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
     </p>
 </form>
+    </div>
+</div>
 
-<div>
+<div class='row'>
     <div class="float-left">
         <a class="btn" href="{{ path('tailleur') }}">
             {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
