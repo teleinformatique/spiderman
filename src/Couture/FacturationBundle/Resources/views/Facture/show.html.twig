@@ -6,11 +6,45 @@
 {% endblock %}
 
 {% block page %}
-
-<h1>Facture</h1>
+    <div class="row">
+        <div class="span11 alert alert-success"><h1 class="titre">Facture : {{ entity.couture.infosCouture }}</h1></div>
+    </div>
+    <div class="row">
+        <div class="span5 ">
+            <div class="panel panel-success background_infos">
+                    <div class="panel-heading"><h3 class="panel-title">Informations du client</h3></div>
+                    <div class="panel-body">
 
 <form class="form-horizontal">
-    <fieldset>        <div class="control-group">
+    <fieldset>        
+        
+        <p class="control-group">
+            <label class="control-label">Nom</label>
+            <!--div class=""-->
+                <span class="">{{ entity.couture.client.nom }}</span>            
+            <!--/div-->
+        </p>
+        <p class="control-group">
+            <label class="control-label">Prénom</label>
+            <!--div class=""-->
+                <span class="">{{ entity.couture.client.prenom }}</span>            
+            <!--/div-->
+        </p>    
+        <p class="control-group">
+            <label class="control-label">Téléphone</label>
+            <!--div class=""-->
+                <span class="">{{ entity.couture.client.telephone }}</span>            
+            <!--/div-->
+        </p>
+        <p class="control-group">
+            <label class="control-label">Adresse</label>
+            <!--div class=""-->
+                <span class="">{{ entity.couture.client.adresse }}</span>            
+            <!--/div-->
+        </p>
+        
+        
+        <!--div class="control-group">
             <label class="control-label">Id</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.id }}</span>            </div>
         </div>        <div class="control-group">
@@ -28,10 +62,99 @@
         </div>        <div class="control-group">
             <label class="control-label">Avance</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.avance }}</span>            </div>
-        </div>    </fieldset>
+        </div-->    </fieldset>
 </form>
+        </div>
+        </div>
+        
+</div>
+        <div class="span6 ">
+            <div class="panel panel-success background_infos">
+                    <div class="panel-heading"><h3 class="panel-title">Informations Facture</h3></div>
+                    <div class="panel-body">
 
-<div>
+            <form class="form-horizontal">
+                <fieldset>        
+
+                    <p class="control-group">
+                        <label class="control-label">Date</label>
+                        <!--div class=""-->
+                            <span class="">{{ entity.date|date ('d-M-Y') }}</span>            
+                        <!--/div-->
+                    </p>
+                    <p class="control-group">
+                        <label class="control-label">Désignation</label>
+                        <!--div class=""-->
+                            <span class="">{{ entity.couture.infosCouture }}</span>            
+                        <!--/div-->
+                    </p>
+                    <p class="control-group">
+                        <label class="control-label">Prix</label>
+                        <!--div class=""-->
+                            <span class="">{{ entity.couture.prix }}</span>            
+                        <!--/div-->
+                    </p>    
+                    <p class="control-group">
+                        <label class="control-label">Avance</label>
+                        <!--div class=""-->
+                            <span class="">{{ entity.avance }}</span>            
+                        <!--/div-->
+                    </p>
+                    <!--p class="control-group">
+                        <label class="control-label">Reste à payer </label>
+                        <div class="">
+                            <span class="">{{ entity.couture.prix - entity.avance }} </span>            
+                        </div>
+                    </p-->
+                    
+
+
+                        </fieldset>
+            </form>
+                        
+        </div>
+        </div>
+        
+</div>
+                        <div class="span11 ">
+            <div class="panel panel-danger">
+                <div class="panel-heading"><h3 class="panel-title">Reste à payer : <span class="badge">{{ entity.couture.prix - entity.avance }}</span></h3></div>
+                    
+                        
+                    </div>
+                    </div>
+                          
+    <div class="span11">
+                <div class="panel panel-success">
+                    <div class="panel-heading"><h3 class="panel-title">Informations Modèle <span class="badge">3</span></h3></div>
+                    <div class="panel-body">
+                        <form class='table-details'>
+                            <fieldset>
+                                <p class="control-group">
+                                            <label class="control-label">Libellé</label>
+                                            <!--div class=""-->
+                                                <span class="">{{ entity.couture.modele.libelle }}</span>            
+                                            <!--/div-->
+                                </p>
+                                
+                                    <div class="controls">
+                                        <span class="image-responsive-modele">
+                                            <img src={{ asset ( entity.couture.modele.image.getWebPath()) }} /> 
+                                        </span>            
+                                    </div>
+                                
+                                </fieldset>
+                        </form>
+                                        
+                                    
+                               
+                    </div>
+                </div>
+            </div>  
+        
+    </div>
+
+<div class='row'>
     <div class="float-left">
         <a class="btn" href="{{ path('facture') }}">
             {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}

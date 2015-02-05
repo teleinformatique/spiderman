@@ -10,10 +10,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrapView;
+use Doctrine\Common\Util\Debug as Debug;
 
-use Couture\CoutureBundle\Entity\Couture;
+use Couture\CoutureBundle\Entity\Couture as Couture;
 use Couture\CoutureBundle\Form\CoutureType;
 use Couture\CoutureBundle\Form\CoutureFilterType;
+use Couture\CoutureBundle\Entity\Mesure as Mesure ;
 
 /**
  * Couture controller.
@@ -180,12 +182,15 @@ class CoutureController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Couture entity.');
         }
+        
+        
 
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            
         );
     }
 
