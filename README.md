@@ -17,7 +17,7 @@ L'évolution du nombre de coutures fait par votre entreprise dans la journée, l
 For details contact mseye@touba-bss.com
 --------------
 
-C'est une produit de la structure Touba Business Services & Solutions :
+C'est un produit de la structure Touba Business Services & Solutions :
 
   * Basée à Dakar - HLM 2 N° 646 
 
