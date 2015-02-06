@@ -4,6 +4,7 @@ namespace Couture\CoutureBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Couture\ClientBundle\Entity\Client as Client;
+use Couture\CoutureBundle\Entity\Mesure as Mesure ;
 
 /**
  * Couture
@@ -400,5 +401,16 @@ class Couture
     public function getMesure()
     {
         return $this->mesure;
+    }
+    
+    public function getMesuresClient($idMesure, $em)
+    {
+        //$idMesure = $entity->getMesure();
+        $mesure = $em->getRepository('CoutureCoutureBundle:Mesure')->find($idMesure);
+                print '<pret>';
+        Debug::dump($mesure);
+       print '</pret>';
+////        var_dump($factures);
+       die;
     }
 }
