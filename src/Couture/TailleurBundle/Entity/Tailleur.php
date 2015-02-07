@@ -397,4 +397,24 @@ class Tailleur
     {
         return $this->datec;
     }
+    
+    
+        public function getStatistique($em)
+    {
+        
+        $req="SELECT count(ct.id) as nbreCouture, MONTH(ct.datec) as mois"
+                . "FROM CoutureCoutureBundle:Couture ct  "
+                . "GROUP BY mois"
+              ;
+                
+
+        $query = $em->createQuery($req);
+       
+        $coutures = $query->getResult();
+        \Doctrine\Common\Util\Debug::dump($coutures);die;
+        return $coutures;
+        
+
+                    
+    }
 }

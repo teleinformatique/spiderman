@@ -7,5 +7,16 @@ $(document).ready(function (){
             $('.show-details').on('click', function (){
                         $(this).closest('div .panel').find('.table-details').toggleClass("hide-content");
                     });
+            $('#btn-print').on('click', function (event){
+                event.preventDefault();
+                        window.print();
+                    });
+                    
+                    
+                    var resteAPayer = +$('#net-a-payer').data('reste');
+                    $('.reste').text(NumberToLetter(resteAPayer));
             
         });
+        
+        
+        

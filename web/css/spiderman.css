@@ -113,3 +113,7 @@ select {
 {
     width: 100%;
 }
+
+.facture-table{
+    display: none;
+}

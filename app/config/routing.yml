@@ -25,3 +25,8 @@ couture_client:
 app:
     resource: @AppBundle/Controller/
     type:     annotation
+    
+
+dashboard:
+    path: /dashboard
+    defaults: { _controller:CoutureTailleurBundle:Tailleur:dashboard }
