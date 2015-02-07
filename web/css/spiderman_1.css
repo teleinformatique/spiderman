@@ -1,0 +1,27 @@
+.navbar-inverse
+{
+    display:none;
+}
+div.span11:nth-child(4) > div:nth-child(1){
+    display: none;
+}
+
+.classe-masquee{
+    display: none;
+}
+
+.table > tbody:nth-child(1) > tr:nth-child(2){
+    
+    height: 100px;
+    
+}
+
+.facture-table{
+    display: block;
+    width: 100%;
+}
+
+.hide-content
+{
+    display: block;
+}
