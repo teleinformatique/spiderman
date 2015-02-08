@@ -21,7 +21,16 @@ div.span11:nth-child(4) > div:nth-child(1){
     width: 100%;
 }
 
+.designation{
+    
+    width: 55%;
+}
+
 .hide-content
 {
     display: block;
+}
+
+p, span, label, .control-group, .control-label {
+    margin: 0;
 }
