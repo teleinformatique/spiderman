@@ -135,6 +135,7 @@ class ModeleController extends Controller
              * 
              */
             $this->modificationLibelleImage($entity);
+            $entity->setIduser($this->getUser()->getId());
             
             $em->persist($entity);
             $em->flush();

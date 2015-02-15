@@ -1,26 +1,28 @@
 couture_tailleur:
     resource: "@CoutureTailleurBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /atelier
 
 couture_facturation:
     resource: "@CoutureFacturationBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /atelier
 
 couture_couture:
     resource: "@CoutureCoutureBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /atelier
 
 couture_client:
     resource: "@CoutureClientBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /atelier
+    
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
-#couture_couture:
-#    resource: "@CoutureCoutureBundle/Resources/config/routing.yml"
-#    prefix:   /
+
 
 app:
     resource: @AppBundle/Controller/
@@ -30,3 +32,10 @@ app:
 dashboard:
     path: /dashboard
     defaults: { _controller:CoutureTailleurBundle:Tailleur:dashboard }
+    
+connexion:
+    path: /connexion
+    defaults: { _controller:CoutureTailleurBundle:Tailleur:dashboard }
+    
+    
+    
