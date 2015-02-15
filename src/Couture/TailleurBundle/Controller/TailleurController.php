@@ -34,6 +34,8 @@ class TailleurController extends Controller
         list($filterForm, $queryBuilder) = $this->filter();
 
         list($entities, $pagerHtml) = $this->paginator($queryBuilder);
+        
+        
 
         return array(
             'entities' => $entities,
@@ -130,7 +132,7 @@ class TailleurController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity->setIduser(0);
+            $entity->setIduser($this->getUser()->getId());
             $em->persist($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.create.success');

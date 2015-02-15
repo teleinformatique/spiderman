@@ -145,7 +145,7 @@ class FactureController extends Controller
             
             $etat = $em->getRepository('CoutureFacturationBundle:Etatfacture')->find(1);
             $entity->setEtatfacture($etat);
-            $entity->setIduser(0);
+            $entity->setIduser($this->getUser()->getId());
             $em->persist($entity);
             
             $em->flush();

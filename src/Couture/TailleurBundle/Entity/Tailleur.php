@@ -2,6 +2,7 @@
 
 namespace Couture\TailleurBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tailleur")
  * @ORM\Entity
  */
-class Tailleur
+class Tailleur extends BaseUser
 {
     /**
      * @var integer
@@ -19,7 +20,7 @@ class Tailleur
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -42,26 +43,7 @@ class Tailleur
      */
     private $telephone;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="login", type="string", length=255, nullable=true)
-     */
-    private $login;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255, nullable=true)
-     */
-    private $password;
+    
 
     /**
      * @var \DateTime
@@ -106,7 +88,10 @@ class Tailleur
     private $datec;
     
     
+    
+    
     public function __construct() {
+        parent::__construct();
         $this->datec = new \DateTime();
     }
 

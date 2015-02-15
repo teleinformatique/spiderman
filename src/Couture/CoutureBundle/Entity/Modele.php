@@ -55,6 +55,13 @@ class Modele
      * @ORM\Column(name="datemod", type="datetime", nullable=true)
      */
     private $datemod;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="genre", type="integer", nullable=true)
+     */
+    private $genre;
 
     /**
      * @var \Image
@@ -65,10 +72,31 @@ class Modele
      * })
      */
     private $image;
+    
+    /**
+     * @var \Categoriemodele
+     *
+     * @ORM\ManyToOne(targetEntity="Categoriemodele", cascade={"persist", "remove"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categoriemodele", referencedColumnName="id")
+     * })
+     */
+    private $categoriemodele;
 
     
-    
-    public function __construct() {
+    public function getCategoriemodele() {
+        
+        return $this->categoriemodele;
+    }
+
+    public function setCategoriemodele($categoriemodele) {
+        
+        $this->categoriemodele = $categoriemodele;
+        
+        return $this;
+    }
+
+        public function __construct() {
         $this->datec = new \DateTime();
     }
 
@@ -220,8 +248,16 @@ class Modele
         return $this->image;
     }
     
-    
-    
+    public function getGenre() {
+        return $this->genre;
+    }
+
+    public function setGenre($genre) {
+        $this->genre = $genre;
+        return $this;
+    }
+
+        
     public function getLastCoutures($id, $nombreCoutures, $em)
     {
         
