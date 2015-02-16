@@ -63,16 +63,16 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
-#        types:
-#            json: Sonata\Doctrine\Types\JsonType
+        types:
+            json: Sonata\Doctrine\Types\JsonType
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
-#        entity_managers:
-#            default:
-#                mappings:
-        #            ApplicationSonataUserBundle: ~
-        #            SonataUserBundle: ~
+#        auto_mapping: true
+        entity_managers:
+            default:
+                auto_mapping: true
+                mappings:
+                    ApplicationSonataUserBundle: ~
         #        auto_mapping: true
 
 # Swiftmailer Configuration
@@ -88,9 +88,15 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Couture\TailleurBundle\Entity\Tailleur
+    profile:  # Authentication Form
+        form:
+            type:               fos_user_profile
+            #handler:            fos_user.profile.form.handler.default
+            name:               fos_user_profile_form
+            #validation_groups:  [Authentication] # Please note : this is not the default value
     
-#    group:
-#        group_class:   Application\Sonata\UserBundle\Entity\Group
+    group:
+        group_class:   Application\Sonata\UserBundle\Entity\Group
         
 
 #sonata_user:
@@ -104,3 +110,51 @@ fos_user:
 #        
 #        sonata.user.block.menu:    # used to display the menu in profile pages
 #        sonata.user.block.account: # used to display menu option (login option)
+#config.yml
+sonata_admin:
+    title:      Tailleur Admin Panel !
+    templates:
+        ## default global templates
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        ## default actions templates, should extend a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+        history: SonataAdminBundle:CRUD:history.html.twig
+        preview: SonataAdminBundle:CRUD:preview.html.twig
+        delete:  SonataAdminBundle:CRUD:delete.html.twig
+    security:
+        handler: sonata.admin.security.handler.role
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
+            
+sonata_user:
+    security_acl:     false
+    class:
+        user:         Couture\TailleurBundle\Entity\Tailleur
+    admin:                  # Admin Classes
+        user:
+            class:          Sonata\UserBundle\Admin\Entity\UserAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+ 
+        group:
+            class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+    profile:  # Profile Form (firstname, lastname, etc ...)
+        form:
+            type:               sonata_user_profile
+            handler:            sonata.user.profile.form.handler.default
+            name:               sonata_user_profile_form
+            validation_groups:  [Profile]
