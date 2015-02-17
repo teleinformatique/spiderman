@@ -48,10 +48,10 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 login_path:     /login
-                default_target_path: dashboard
+                default_target_path: client
             logout:
                 path: fos_user_security_logout
-                target: /login
+                #target: /login
             anonymous:    true
             
            
@@ -61,10 +61,10 @@ security:
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
         # URL of FOSUserBundle which need to be available to anonymous users
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+#        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/admin/, role: ROLE_ADMIN }
 
         # Tailleur login page needs to be access without credential
         - { path: ^/atelier, role: ROLE_TAILLEUR }
