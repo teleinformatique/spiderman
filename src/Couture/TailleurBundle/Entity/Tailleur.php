@@ -403,4 +403,9 @@ class Tailleur extends BaseUser
 
                     
     }
+    
+        /*public function __toString()
+    {
+        return ($this->getTitle() === null) ? 'Untitled news' : (string) $this->getTitle();
+    } */
 }
