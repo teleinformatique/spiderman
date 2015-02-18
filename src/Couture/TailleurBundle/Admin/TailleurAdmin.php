@@ -6,7 +6,11 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Couture\TailleurBundle\Form\TailleurType;
+//use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 //use Couture\TailleurBundle\Entity\UploadedFileTransformer;
+use Knp\Menu\ItemInterface as MenuItemInterface;
+use Couture\TailleurBundle\Entity\Tailleur;
 
 class TailleurAdmin extends Admin
 {
