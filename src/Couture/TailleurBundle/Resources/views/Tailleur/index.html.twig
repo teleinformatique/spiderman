@@ -71,10 +71,10 @@
             <th>Nom</th>
             <th>Prenom</th>
             <th>Telephone</th>
-            <th>Email</th>
+            <!--th>Email</th-->
             <th>Login</th>
             <!--th>Password</th-->
-            <th>Dateembauche</th>
+            <th>Date d'embauche</th>
             <!--th>Salaire</th-->
             <!--th>User</th-->
             <!--th>Datemod</th-->
@@ -90,10 +90,10 @@
             <td>{{ entity.nom }}</td>
             <td>{{ entity.prenom }}</td>
             <td>{{ entity.telephone }}</td>
-            <td>{{ entity.email }}</td>
+            <!--td>{{ entity.email }}</td-->
             <td>{{ entity.username }}</td>
             <!--td>{#{ entity.password }#}</td-->
-            <td>{% if entity.dateembauche %}{{ entity.dateembauche|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.dateembauche %}{{ entity.dateembauche|date('d M Y') }}{% endif %}</td>
             <!--td>{{ entity.salaire }}</td-->
             <!--td>{{ entity.user }}</td-->
             <!--td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td-->

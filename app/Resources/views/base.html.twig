@@ -100,35 +100,35 @@
 
                                 </ul>
                             </li>
-                            
+
 
 
                         </ul>
                         <div class="pull-right">
                             <!--h3 class="message_user">Bienvenue {#{ app.user.username|capitalize }#}</h3-->
-                   <li class="dropdown">
-                       <a href="#" class="dropdown-toggle btn " data-toggle="dropdown">
-                           <span class="icon-user"></span>
-                           {{ app.user.username|capitalize }}<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{path('dashboard') }}">
-                                <span class="icon-home"></span>
-                                Tableau de Bord
-                            </a>
-                        </li>
-                         <!--li><a href="#">
-                                 <span class="icon-profile"></span>
-                                 Modifier mon profil
-                             </a>
-                         </li-->
-                          <li><a href="{{path('fos_user_security_logout') }}">
-                                  <span class="icon icon-lock"></span>
-                                  Déconnexion
-                              </a>
-                          </li>
-                    </ul>
-                    </li>
-                            <!--a class="btn btn-danger" href="{{ path('fos_user_security_logout') }}"><span class="icon-exit"></span>DECONNEXION</a-->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle btn " data-toggle="dropdown">
+                                    <span class="icon-user"></span>
+                                    {{ app.user.username|capitalize }}<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{path('dashboard') }}">
+                                            <span class="icon-home"></span>
+                                            Tableau de Bord
+                                        </a>
+                                    </li>
+                                    <!--li><a href="#">
+                                            <span class="icon-profile"></span>
+                                            Modifier mon profil
+                                        </a>
+                                    </li-->
+                                    <li><a href="{{path('fos_user_security_logout') }}">
+                                            <span class="icon icon-lock"></span>
+                                            Déconnexion
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                                    <!--a class="btn btn-danger" href="{{ path('fos_user_security_logout') }}"><span class="icon-exit"></span>DECONNEXION</a-->
 
                         </div>
                     </div><!--/.nav-collapse -->
@@ -167,6 +167,50 @@
 
     </div>
 
+    {% block footer %}   
+        <footer>
+        <div class="bar">
+            <div class="bar-wrap">
+                <ul class="links">
+                    <li><a href="{{ path('dashboard') }}">Accueil</a></li>
+                    <li><a href="{{ path('client') }}">Client</a></li>
+                    <li><a href="#">Admin</a></li>
+                    <li><a href="{#{ path('a_propos') }#}">A propos</a></li>
+                    <li><a href="{#{ path('licence') }#}">Licence</a></li>
+                </ul>
+
+                <div class="social">
+                    <a href="#" class="fb">
+                        <span data-icon="f" class="icon"></span>
+                        <span class="info">
+                            <span class="follow">Become a fan Facebook</span>
+                            <span class="num">9,999</span>
+                        </span>
+                    </a>
+
+                    <a href="#" class="tw">
+                        <span data-icon="T" class="icon"></span>
+                        <span class="info">
+                            <span class="follow">Follow us Twitter</span>
+                            <span class="num">9,999</span>
+                        </span>
+                    </a>
+
+                    <a href="#" class="rss">
+                        <span data-icon="R" class="icon"></span>
+                        <span class="info">
+                            <span class="follow">Subscribe RSS</span>
+                            <span class="num">9,999</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="clear"></div>
+                <div class="copyright">Touba Business Services & Solutions | &copy;  2014 All Rights Reserved</div>
+            </div>
+        </div>
+            </footer>
+    {% endblock %}
+
     {% block javascript %}
         <script src="{{ asset('bundles/jordillonchcrudgenerator/js/jquery.min.js') }}"></script>
         <script src="{{ asset('bundles/jordillonchcrudgenerator/js/bootstrap.js') }}"></script>
@@ -175,5 +219,6 @@
         <script src="{{ asset('./js/spiderman.js') }}"></script>
 
     {% endblock %}
+
 </body>
 </html>

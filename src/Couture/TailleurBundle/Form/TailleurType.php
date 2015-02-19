@@ -15,8 +15,8 @@ class TailleurType extends AbstractType
             ->add('prenom')
             ->add('telephone')
             ->add('email')
-            ->add('login')
-            ->add('password')
+            ->add('username')
+            //->add('password')
             ->add('dateembauche', 'date', array(
                         'label'  => 'Date d\'embauche'))
             ->add('salaire')
