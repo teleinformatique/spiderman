@@ -27,6 +27,10 @@
             <label class="control-label">Description</label>
             <div class="controls">                <span class="">pour bcp plus de détails comme test {{ entity.description }}</span>            </div>
         </div>        <div class="control-group">
+            </div>        <div class="control-group">
+            <label class="control-label">Catégorie</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input"> {{ entity.categoriemodele.libelle }}</span>            </div>
+        </div>        <div class="control-group">
             <label class="control-label">Créé le</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.datec|date('d-M-Y') }}</span>            </div>
         </div>        <!--div class="control-group">

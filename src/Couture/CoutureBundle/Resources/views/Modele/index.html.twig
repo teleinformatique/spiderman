@@ -63,10 +63,10 @@
         <tr>
             <th>Id</th>
             <th>Libelle</th>
-            <th>Description</th>
+            <!--th>Description</th>
             <th>Datec</th>
             <th>Iduser</th>
-            <th>Datemod</th>
+            <th>Datemod</th-->
             <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
         </tr>
     </thead>
@@ -75,10 +75,10 @@
         <tr>
             <td><a href="{{ path('modele_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.libelle }}</td>
-            <td>{{ entity.description }}</td>
+            <!--td>{{ entity.description }}</td>
             <td>{% if entity.datec %}{{ entity.datec|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{{ entity.iduser }}</td>
-            <td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td-->
             <td>
         <a class="btn btn-mini" href="{{ path('modele_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}

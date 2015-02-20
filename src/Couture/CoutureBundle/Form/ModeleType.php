@@ -11,9 +11,18 @@ class ModeleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('categoriemodele','entity', array(
+                'class' => 'CoutureCoutureBundle:Categoriemodele',
+                'property' => 'libelle',
+                'expanded' => false,
+                'multiple' => false,
+                ))
             ->add('libelle')
             ->add('description')
             //->add('datec')
+            ->add('genre', 'choice', array(
+                        'choices'   => array('0' => 'Femme', '1' => 'Homme'),
+                        'required'  => true,))
             //->add('iduser')
             //->add('datemod')
             ->add('image', new ImageType())
