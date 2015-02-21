@@ -40,117 +40,14 @@
 </div>
 </div-->
 
+        {% block menu %}
+            {% include "::menu.html.twig" %}
+        {% endblock %}
 
 
 
-
-        <!-- Fixed navbar -->
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#"><img src="{{ asset('images/LOGO.png') }}" /></a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Client <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ path('client_new') }}">Ajouter</a></li>
-                                    <li><a href="{{ path('client') }}">Lister</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modèle <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ path('categorieModele') }}">Categories</a></li>
-                                    <li><a href="{{ path('modele_new') }}">Ajouter</a></li>
-                                    <li><a href="{{ path('modele') }}">Lister</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Couture <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ path('couture_new') }}">Ajouter</a></li>
-                                    <li><a href="{{ path('couture') }}">Lister</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Facturation <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ path('facture_new') }}">Ajouter</a></li>
-                                    <li><a href="{{ path('facture') }}">Lister</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tailleur <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ path('tailleur_new') }}">Ajouter</a></li>
-                                    <li><a href="{{ path('tailleur') }}">Lister</a></li>
-
-                                </ul>
-                            </li>
-
-
-
-                        </ul>
-                        <div class="pull-right">
-                            <!--h3 class="message_user">Bienvenue {#{ app.user.username|capitalize }#}</h3-->
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle btn " data-toggle="dropdown">
-                                    <span class="icon-user"></span>
-                                    {{ app.user.username|capitalize }}<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{path('dashboard') }}">
-                                            <span class="icon-home"></span>
-                                            Tableau de Bord
-                                        </a>
-                                    </li>
-                                    <!--li><a href="#">
-                                            <span class="icon-profile"></span>
-                                            Modifier mon profil
-                                        </a>
-                                    </li-->
-                                    <li><a href="{{path('fos_user_security_logout') }}">
-                                            <span class="icon icon-lock"></span>
-                                            Déconnexion
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                                    <!--a class="btn btn-danger" href="{{ path('fos_user_security_logout') }}"><span class="icon-exit"></span>DECONNEXION</a-->
-
-                        </div>
-                    </div><!--/.nav-collapse -->
-
-                </div>
-            {% else %}
-
-                <form action="{{ path("fos_user_security_check") }}" method="post" class="navbar-form navbar-right" role="form">
-                    <div class="form-group">
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"  />  
-                        <input  id="username" name="_username"  type="text" placeholder="Email" class="form-control">
-
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="password" name="_password" placeholder="Password" class="form-control">
-                    </div>
-                    <button type="submit" id="_submit" name="_submit" class="btn btn-success">Ok</button>
-                </form>
-
-            {% endif %}
-        </div>
+        
+        
 
 
         <div class="container">
@@ -169,47 +66,7 @@
     </div>
 
     {% block footer %}   
-        <footer>
-        <div class="bar">
-            <div class="bar-wrap">
-                <ul class="links">
-                    <li><a href="{{ path('dashboard') }}">Accueil</a></li>
-                    <li><a href="{{ path('client') }}">Client</a></li>
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="{#{ path('a_propos') }#}">A propos</a></li>
-                    <li><a href="{#{ path('licence') }#}">Licence</a></li>
-                </ul>
-
-                <div class="social">
-                    <a href="#" class="fb">
-                        <span data-icon="f" class="icon"></span>
-                        <span class="info">
-                            <span class="follow">Become a fan Facebook</span>
-                            <span class="num">9,999</span>
-                        </span>
-                    </a>
-
-                    <a href="#" class="tw">
-                        <span data-icon="T" class="icon"></span>
-                        <span class="info">
-                            <span class="follow">Follow us Twitter</span>
-                            <span class="num">9,999</span>
-                        </span>
-                    </a>
-
-                    <a href="#" class="rss">
-                        <span data-icon="R" class="icon"></span>
-                        <span class="info">
-                            <span class="follow">Subscribe RSS</span>
-                            <span class="num">9,999</span>
-                        </span>
-                    </a>
-                </div>
-                <div class="clear"></div>
-                <div class="copyright">Touba Business Services & Solutions | &copy;  2015 All Rights Reserved</div>
-            </div>
-        </div>
-            </footer>
+        {% include "::footer.html.twig" %}
     {% endblock %}
 
     {% block javascript %}
