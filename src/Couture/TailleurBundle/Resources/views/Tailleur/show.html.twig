@@ -115,6 +115,7 @@
         
   
 <div class='row'>
+    <div class="span12 bouton_action">
     <div class="float-left">
         <a class="btn" href="{{ path('tailleur') }}">
             {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -131,6 +132,7 @@
             {{ form_widget(delete_form) }}
             <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
         </form>
+    </div>
     </div>
 </div>
 {% endblock %}

@@ -8,7 +8,7 @@
 {% block page %}
     
     <div class="row">
-            <div class="span11 alert alert-success"><h1 class="titre">Nos Catégories de Modèles</h1></div>
+            <div class="span12 alert alert-success"><h1 class="titre">Nos Catégories de Modèles</h1></div>
     </div>
 
 <div class="row">
@@ -33,13 +33,13 @@
         </div>
     </div>
 
-    <div class="span11">
+    <div class="span5">
         <div id="filters" class="collapse">
-
+            {% form_theme filterForm with ['CoutureClientBundle:Client:perso_input_bootstrap.html.twig'] %}
             <form class="well" action="{{ path('categorieModele') }}" method="get" {{ form_enctype(filterForm) }}>
-                {{ form_row(filterForm.id) }}
+                {#{ form_row(filterForm.id) }#}
                 {{ form_row(filterForm.libelle) }}
-                {{ form_row(filterForm.description) }}
+                {#{ form_row(filterForm.description) }#}
                 {{ form_rest(filterForm) }}
 
                 <p>
@@ -49,6 +49,7 @@
             </form>
         </div>
     </div>
+                </div>
 
     <div class="span11">
         <div class="row">
@@ -59,18 +60,18 @@
     <table class="table table-striped table-condensed">
     <thead>
         <tr>
-            <th>Id</th>
+            <!--th>Id</th-->
             <th>Libelle</th>
-            <th>Description</th>
+            <!--th>Description</th-->
             <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('categorieModele_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <!--td><a href="{{ path('categorieModele_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td-->
             <td>{{ entity.libelle }}</td>
-            <td>{{ entity.description }}</td>
+            <!--td>{{ entity.description }}</td-->
             <td>
         <a class="btn btn-mini" href="{{ path('categorieModele_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -92,7 +93,7 @@
     {{ pagerHtml|raw }}
     </div>
 
-        <div class="span8">
+        <div class="span7">
     <a class="btn btn-primary likepaginator" href="{{ path('categorieModele_new') }}">
             {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} Categoriemodele
         </a>

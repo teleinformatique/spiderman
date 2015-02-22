@@ -32,14 +32,14 @@
         </div>
     </div>
 
-    <div class="span12">
+    <div class="span5">
         <div id="filters" class="collapse">
-
+            {% form_theme filterForm with ['CoutureClientBundle:Client:perso_input_bootstrap.html.twig'] %}
             <form class="well" action="{{ path('tailleur') }}" method="get" {{ form_enctype(filterForm) }}>
-                {{ form_row(filterForm.id) }}
+                {#{ form_row(filterForm.id) }#}
                 {{ form_row(filterForm.nom) }}
                 {{ form_row(filterForm.prenom) }}
-                {{ form_row(filterForm.telephone) }}
+                {#{ form_row(filterForm.telephone) }}
                 {{ form_row(filterForm.email) }}
                 {{ form_row(filterForm.login) }}
                 {{ form_row(filterForm.password) }}
@@ -48,7 +48,7 @@
                 {{ form_row(filterForm.user) }}
                 {{ form_row(filterForm.datemod) }}
                 {{ form_row(filterForm.iduser) }}
-                {{ form_row(filterForm.datec) }}
+                {{ form_row(filterForm.datec) }#}
                 {{ form_rest(filterForm) }}
 
                 <p>
@@ -58,6 +58,7 @@
             </form>
         </div>
     </div>
+                </div>
 
     <div class="span12">
         <div class="row">
@@ -120,7 +121,7 @@
     {{ pagerHtml|raw }}
     </div>
 
-        <div class="span8">
+        <div class="span7">
     <a class="btn btn-primary likepaginator" href="{{ path('tailleur_new') }}">
             {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} Tailleur
         </a>
