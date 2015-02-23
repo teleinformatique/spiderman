@@ -277,4 +277,11 @@ class Modele
         $coutures = $query->getResult();
         return $coutures;                    
     }
+    
+    public function getAllModeles($em)
+    {
+        $entities = $em->getRepository('CoutureCoutureBundle:Modele')->findAll();
+        
+        return $entities;
+    }
 }

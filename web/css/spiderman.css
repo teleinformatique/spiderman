@@ -279,3 +279,15 @@ footer a {
 .clear {
     clear: both;
 }
+
+.img-modele
+{
+    border: 2px solid #ededed;
+    min-height: 75%;
+    
+}
+
+.modele-thumbnail
+{
+    cursor: pointer;
+}
