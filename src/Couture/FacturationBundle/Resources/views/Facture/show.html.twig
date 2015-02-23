@@ -10,8 +10,25 @@
 {% endblock %}
 
 {% block page %}
+    <div class="facture-header hide-content">
+        <div class="tete-facture">
+            <div class="logo-facture">
+                <a class="navbar-brand" href="#"><img src="{{ asset('images/LOGO.png') }}" /></a>
+            </div>
+            <div class="atelier-facture">
+                <h4><a class="navbar-brand" href="#">TBSS - Couture</a></h4>
+            </div>
+        </div>
+        <p><label>Adresse : </label> HLM 2 villa N° 646 </p>
+        <p><label>Tél : </label> (+221) 33 864 47 90 </p>
+        <p><label>Port : </label> (+221) 78 864 47 90</p>
+        <p><label>Site : </label> www.touba-bss.com</p>
+        <p><label>Email : </label> tbss@touba-bss.com</p>
+        <p><label>Dakar - SENEGAL</label></p>
+        
+    </div>
     <div class="row">
-        <div class="span11 alert alert-success"><h1 class="titre">Facture : {{ entity.couture.infosCouture }}</h1></div>
+        <div class="span12 alert alert-success"><h1 class="titre">Facture N°: {{ entity.couture.client.id }}{{ entity.id }}-{{ entity.date|date('dm') }}</h1></div>
     </div>
     <div class="row">
         <div class="span5 ">
@@ -121,7 +138,7 @@
 
         </div>
     </div>
-    <div class="container">
+    <div class="row">
         <div class="span12">
             <table class="table table-striped facture-table">
                 <tr>
@@ -152,21 +169,26 @@
             </table>
             <hr>
             <div class="span11 hide-content classe-masquee"> 
-                <p  >Arrété la présente facture à la somme de <span class="reste"></span> Francs CFA</p>
+                <p  >Arrétée la présente facture à la somme de <span class="reste"></span> Francs CFA</p>
             </div>
         </div>
     </div>
-    <div class="span11 ">
+                <div class="row">
+    <div class="span12 classe-masquee">
         <div class="panel panel-danger">
             <div class="panel-heading"><h3 class="panel-title">Reste à payer : <span class="badge">{{ entity.couture.prix - entity.avance }}</span></h3></div>
 
 
         </div>
     </div>
+            </div>
+            
+            
+            <div class="row">
 
-    <div class="span11 classe-masquee">
+    <div class="span12 classe-masquee">
         <div class="panel panel-success">
-            <div class="panel-heading"><h3 class="panel-title">Informations Modèle <span class="badge">3</span></h3></div>
+            <div class="panel-heading"><h3 class="panel-title">Informations Modèle <!--span class="badge">3</span--></h3></div>
             <div class="panel-body">
                 <form class='table-details'>
                     <fieldset>
@@ -191,10 +213,11 @@
             </div>
         </div>
     </div>  
+                            </div>
 
-</div>
 
-<div class='row classe-masquee'>
+<div class="row">
+<div class='span12 bouton_action classe-masquee'>
     <div class="float-left">
         <a class="btn" href="{{ path('facture') }}">
             {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -218,6 +241,7 @@
         </a>
     </div>
 </div>
+        </div>
 
 {% endblock %}
 

@@ -328,4 +328,62 @@ class ModeleController extends Controller
            $entity->setIduser(0);
        }
     }
+    
+    
+    public function vitrineAction()
+    {
+//        $em = $this->getDoctrine()->getManager();
+//        $entities = $em->getRepository('CoutureCoutureBundle:Modele')->findAll();
+//        
+//        //\Doctrine\Common\Util\Debug::dump($entities);
+//        
+////        $entities = getAllModeles($em);
+        list($filterForm, $queryBuilder) = $this->filter();
+
+        list($entities, $pagerHtml) = $this->pagination($queryBuilder);
+
+        return  $this->render("CoutureVitrineBundle:Vitrine:index.html.twig",
+                                    array(
+                                        'entities' => $entities,
+                                        'pagerHtml' => $pagerHtml,
+                                        'filterForm' => $filterForm->createView(),
+                                        
+                                    )
+                   );
+        
+               
+        
+        
+    }
+    
+    
+    protected function pagination($queryBuilder)
+    {
+        // Paginator
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $pagerfanta = new Pagerfanta($adapter);
+        $currentPage = $this->getRequest()->get('page', 1);
+        $pagerfanta->setCurrentPage($currentPage);
+        $entities = $pagerfanta->getCurrentPageResults();
+
+        // Paginator - route generator
+        $me = $this;
+        $routeGenerator = function($page) use ($me)
+        {
+            return $me->generateUrl('vitrineIndex', array('page' => $page));
+        };
+
+        // Paginator - view
+        $translator = $this->get('translator');
+        $view = new TwitterBootstrapView();
+        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
+            'proximity' => 3,
+            'prev_message' => $translator->trans('views.index.pagprev', array(), 'JordiLlonchCrudGeneratorBundle'),
+            'next_message' => $translator->trans('views.index.pagnext', array(), 'JordiLlonchCrudGeneratorBundle'),
+        ));
+
+        return array($entities, $pagerHtml);
+    }
+    
+    
 }

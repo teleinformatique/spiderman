@@ -14,9 +14,9 @@ class EtatinterventionFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
+            //->add('id', 'filter_number_range')
             ->add('libelle', 'filter_text')
-            ->add('description', 'filter_text')
+            //->add('description', 'filter_text')
         ;
 
         $listener = function(FormEvent $event)

@@ -1,0 +1,32 @@
+{#% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %#}
+{% extends '::base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.new.creation'|trans({'%entity%': 'Categoriemodele'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+<div class="row">
+        <div class="span12 alert alert-success"><h1 class="titre">Nouvelle Catégorie de Modèle </h1></div>
+    </div>
+
+<div class='row'>
+    {% form_theme form with ['CoutureClientBundle:Client:perso_input_bootstrap.html.twig'] %}
+<div class="col-sm-6 col-sm-offset-3">
+<form class="well" action="{{ path('categorieModele_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit" class="btn btn-success">{{ 'views.new.create'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+    </p>
+</form>
+    </div>
+    </div>
+
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('categorieModele') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+</div>
+{% endblock %}

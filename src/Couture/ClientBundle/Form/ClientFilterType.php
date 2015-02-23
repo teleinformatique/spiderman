@@ -14,14 +14,14 @@ class ClientFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
+            //->add('id', 'filter_number_range')
             ->add('nom', 'filter_text')
             ->add('prenom', 'filter_text')
-            ->add('telephone', 'filter_text')
-            ->add('email', 'filter_text')
-            ->add('adresse', 'filter_text')
-            ->add('datec', 'filter_date_range')
-            ->add('iduser', 'filter_number_range')
+//            ->add('telephone', 'filter_text')
+//            ->add('email', 'filter_text')
+//            ->add('adresse', 'filter_text')
+//            ->add('datec', 'filter_date_range')
+//            ->add('iduser', 'filter_number_range')
         ;
 
         $listener = function(FormEvent $event)

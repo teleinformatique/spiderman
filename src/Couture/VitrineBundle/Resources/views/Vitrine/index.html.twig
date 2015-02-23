@@ -1,0 +1,114 @@
+{% extends "::base.html.twig" %}
+{% block stylesheet %}
+        {{ parent() }} 
+        <link href="{{ asset ('css/gallery/galleriffic-2.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}CoutureVitrineBundle:Vitrine:index{% endblock %}
+
+{% block page %}
+<h1>Welcome to the Vintrine:index page</h1>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="row">
+            
+        
+            
+                
+                {% for entity in entities %}
+                    <div class="col-sm-4">
+                
+                    <a class="modele-thumbnail" data-source="{{ asset (entity.image.getWebPath()) }}" title="Title #0">
+                        <img style = "height: 160px !important;"  class="img-responsive img-thumbnail" src="{{ asset (entity.image.getWebPath()) }}" alt="Title #0" />
+                    </a>
+                    
+                </div>
+                {% endfor %}
+              
+        </div>
+        
+    </div>
+    <div id="modele-big" class="col-sm-8 img-modele">
+        
+        
+    </div>
+</div>
+        
+                <div style="clear: both;"></div>
+
+
+
+
+
+
+
+<div class="span4">
+    {{ pagerHtml|raw }}
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascript %}
+        {{ parent() }} 
+        <script src="{{ asset('./js/jquery.galleriffic.js') }}"></script>
+        
+        <script>
+        jQuery(document).ready(function($) {
+				// We only want these styles applied when javascript is enabled
+				$('div.navigation').css({'width' : '300px', 'float' : 'left'});
+				$('div.content').css('display', 'block');
+
+				// Initially set opacity on thumbs and add
+				// additional styling for hover effect on thumbs
+				var onMouseOutOpacity = 0.67;
+				$('#thumbs ul.thumbs li').opacityrollover({
+					mouseOutOpacity:   onMouseOutOpacity,
+					mouseOverOpacity:  1.0,
+					fadeSpeed:         'fast',
+					exemptionSelector: '.selected'
+				});
+				
+				// Initialize Advanced Galleriffic Gallery
+				var gallery = $('#thumbs').galleriffic({
+					delay:                     2500,
+					numThumbs:                 15,
+					preloadAhead:              10,
+					enableTopPager:            true,
+					enableBottomPager:         true,
+					maxPagesToShow:            7,
+					imageContainerSel:         '#slideshow',
+					controlsContainerSel:      '#controls',
+					captionContainerSel:       '#caption',
+					loadingContainerSel:       '#loading',
+					renderSSControls:          true,
+					renderNavControls:         true,
+					playLinkText:              'Play Slideshow',
+					pauseLinkText:             'Pause Slideshow',
+					prevLinkText:              '&lsaquo; Previous Photo',
+					nextLinkText:              'Next Photo &rsaquo;',
+					nextPageLinkText:          'Next &rsaquo;',
+					prevPageLinkText:          '&lsaquo; Prev',
+					enableHistory:             false,
+					autoStart:                 false,
+					syncTransitions:           true,
+					defaultTransitionDuration: 900,
+					onSlideChange:             function(prevIndex, nextIndex) {
+						// 'this' refers to the gallery, which is an extension of $('#thumbs')
+						this.find('ul.thumbs').children()
+							.eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
+							.eq(nextIndex).fadeTo('fast', 1.0);
+					},
+					onPageTransitionOut:       function(callback) {
+						this.fadeTo('fast', 0.0, callback);
+					},
+					onPageTransitionIn:        function() {
+						this.fadeTo('fast', 1.0);
+					}
+				});
+			});
+        </script>
+
+{% endblock %}

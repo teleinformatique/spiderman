@@ -61,7 +61,7 @@ class Image
     
     /**
      * @Assert\File(
-     *     maxSize = "1024k",
+     *     maxSize = "10240k",
      *     mimeTypes = {"image/png", "image/jpeg", "image/gif"},
      *     mimeTypesMessage = "Choisissez un fichier image ( png , gif, ou jpeg) valide."
      * )

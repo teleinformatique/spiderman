@@ -19,6 +19,7 @@ div.span11:nth-child(4) > div:nth-child(1){
 .facture-table{
     display: block;
     width: 100%;
+    margin-top: -20px;
 }
 
 .designation{
@@ -33,4 +34,66 @@ div.span11:nth-child(4) > div:nth-child(1){
 
 p, span, label, .control-group, .control-label {
     margin: 0;
+}
+
+.facture-header
+{
+    //border: 2px solid black;
+    width: 50%;
+    height: 200px;
+    background: yellow;
+    margin-top: -60px;
+}
+
+body > div.container > div:nth-child(2) > div .alert-success
+{
+    width: 95%;
+    height: 50px;
+    font-size: 1.8em;
+}
+
+.logo-facture
+{
+    width: 40%;
+    float: left;
+    
+    
+}
+.atelier-facture
+{
+    float: right;
+    width: 60%;
+    font-size: 1.6em;
+}
+
+.facture-header p
+{
+    text-align: center;
+}
+
+.facture-header label
+{
+    font-size: 1.1em ;
+}
+
+.atelier-facture h4
+{
+    font-size: 1.4em;
+}
+
+.tete-facture
+{
+    height: 30%;
+    margin-bottom: 5px;
+}
+
+.row
+{
+    padding: 0;
+    margin: 0;
+}
+
+.titre
+{
+    font-size: 1.6em;
 }

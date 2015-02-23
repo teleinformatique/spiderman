@@ -15,8 +15,31 @@ $(document).ready(function (){
                     
                     var resteAPayer = +$('#net-a-payer').data('reste');
                     $('.reste').text(NumberToLetter(resteAPayer));
+                    
+                    
+                    
+            
+                $('.modele-thumbnail').on('click',function(){
+                    
+                    var ex_img = $('#modele-big') ; 
+                    ex_img.empty();
+
+                    var src = $(this).data('source');
+                    
+                    var img = $('<img></img>',{
+                        class:'img-responsive',
+                        src:src
+                    }).appendTo(ex_img).fadeIn();
+
+                   
+                });
+
             
         });
+        
+        
+        
+        
         
         
         

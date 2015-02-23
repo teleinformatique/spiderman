@@ -33,16 +33,16 @@ Facturation
         </div>
     </div>
 
-    <div class="span12">
+    <div class="span5">
         <div id="filters" class="collapse">
-
+            {% form_theme filterForm with ['CoutureClientBundle:Client:perso_input_bootstrap.html.twig'] %}
             <form class="well" action="{{ path('facture') }}" method="get" {{ form_enctype(filterForm) }}>
-                {{ form_row(filterForm.id) }}
+                {#{ form_row(filterForm.id) }#}
                 {{ form_row(filterForm.date) }}
-                {{ form_row(filterForm.datemod) }}
+                {#{ form_row(filterForm.datemod) }}
                 {{ form_row(filterForm.datec) }}
                 {{ form_row(filterForm.iduser) }}
-                {{ form_row(filterForm.avance) }}
+                {{ form_row(filterForm.avance) }#}
                 {{ form_rest(filterForm) }}
 
                 <p>
@@ -52,9 +52,11 @@ Facturation
             </form>
         </div>
     </div>
+                </div>
 
-    <div class="span12">
+    
         <div class="row">
+            <div class="span12">
         <div class="panel panel-success">
                     <div class="panel-heading"><h3 class="panel-title">Les Factures <span class="badge">{{ entities|length }}</span></h3></div>
                     <div class="panel-body">
@@ -66,9 +68,9 @@ Facturation
             <th>Couture</th>
             
             <th>Date</th>
-            <th>Datemod</th>
+            <!--th>Datemod</th>
             <th>Datec</th>
-            <th>Iduser</th>
+            <th>Iduser</th-->
             <th>Avance</th>
             <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
         </tr>
@@ -78,10 +80,10 @@ Facturation
         <tr>
             <td><a href="{{ path('facture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{% if entity.couture %}{{ entity.couture.getInfosCouture() }}{% endif %}</td>
-            <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.date %}{{ entity.date|date('d M Y') }}{% endif %}</td>
+            <!--td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.datec %}{{ entity.datec|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{{ entity.iduser }}</td>
+            <td>{{ entity.iduser }}</td-->
             <td>{{ entity.avance }}</td>
             <td>
         <a class="btn btn-mini" href="{{ path('facture_show', { 'id': entity.id }) }}">
@@ -104,7 +106,7 @@ Facturation
     {{ pagerHtml|raw }}
     </div>
 
-        <div class="span8">
+        <div class="span7">
     <a class="btn btn-primary likepaginator" href="{{ path('facture_new') }}">
             {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} Facture
         </a>

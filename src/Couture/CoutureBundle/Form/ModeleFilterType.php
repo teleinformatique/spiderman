@@ -14,12 +14,21 @@ class ModeleFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
+            //->add('id', 'filter_number_range')
             ->add('libelle', 'filter_text')
-            ->add('description', 'filter_text')
-            ->add('datec', 'filter_date_range')
-            ->add('iduser', 'filter_number_range')
-            ->add('datemod', 'filter_date_range')
+            ->add('categoriemodele','entity', array(
+                            'class' => 'CoutureCoutureBundle:Categoriemodele',
+                            'property' => 'libelle',
+                            'expanded' => false,
+                            'multiple' => false
+                            ))
+            ->add('genre', 'choice', array(
+                        'choices'   => array('0' => 'Femme', '1' => 'Homme'),
+                        'required'  => true,))
+//            ->add('description', 'filter_text')
+//            ->add('datec', 'filter_date_range')
+//            ->add('iduser', 'filter_number_range')
+//            ->add('datemod', 'filter_date_range')
         ;
 
         $listener = function(FormEvent $event)

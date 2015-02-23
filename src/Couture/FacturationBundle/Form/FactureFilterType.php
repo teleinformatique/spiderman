@@ -14,12 +14,18 @@ class FactureFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
+            //->add('id', 'filter_number_range')
             ->add('date', 'filter_date_range')
-            ->add('datemod', 'filter_date_range')
-            ->add('datec', 'filter_date_range')
-            ->add('iduser', 'filter_number_range')
-            ->add('avance', 'filter_number_range')
+//            ->add('datemod', 'filter_date_range')
+//            ->add('datec', 'filter_date_range')
+//            ->add('iduser', 'filter_number_range')
+//            ->add('avance', 'filter_number_range')
+//            ->add('couture','entity', array(
+//                'class' => 'CoutureCoutureBundle:Couture',
+//                'property' => 'infosCouture',
+//                'expanded' => false,
+//                'multiple' => false,
+//                ))
         ;
 
         $listener = function(FormEvent $event)

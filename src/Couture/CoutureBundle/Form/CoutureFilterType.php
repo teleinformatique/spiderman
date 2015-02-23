@@ -14,15 +14,29 @@ class CoutureFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
-            ->add('datec', 'filter_date_range')
-            ->add('datemod', 'filter_date_range')
-            ->add('datefin', 'filter_date_range')
-            ->add('prix', 'filter_number_range')
+//            ->add('id', 'filter_number_range')
+//            ->add('datec', 'filter_date_range')
+//            ->add('datemod', 'filter_date_range')
+            //->add('datefin', 'filter_date_range')
+            //->add('prix', 'filter_number_range')
             ->add('tissu', 'filter_text')
-            ->add('detail', 'filter_text')
-            ->add('iduser', 'filter_number_range')
-            ->add('etat', 'filter_number_range')
+//            ->add('detail', 'filter_text')
+//            ->add('iduser', 'filter_number_range')
+//            ->add('tissu','entity', array(
+//                            'class' => 'CoutureCoutureBundle:Couture',
+//                            'property' => 'tissu',
+//                            'expanded' => false,
+//                            'multiple' => false,
+//                            ))
+//            ->add('modele','entity', array(
+//                            'class' => 'CoutureCoutureBundle:Modele',
+//                            'property' => 'libelle',
+//                            'expanded' => false,
+//                            'multiple' => false,
+//                ))
+            ->add('etat', 'choice', array(
+                        'choices'   => array('0' => 'En cours', '1' => 'Terminée'),
+                        'required'  => true,))
         ;
 
         $listener = function(FormEvent $event)

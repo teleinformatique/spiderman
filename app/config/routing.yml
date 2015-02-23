@@ -1,3 +1,8 @@
+couture_vitrine:
+    resource: "@CoutureVitrineBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 couture_tailleur:
     resource: "@CoutureTailleurBundle/Controller/"
     type:     annotation
@@ -46,6 +51,12 @@ app:
     type:     annotation
     
 
+vitrineIndex:
+    path: /vitrine-index
+    defaults: { _controller:CoutureCoutureBundle:Modele:vitrine }
+    
+
+    
 dashboard:
     path: /dashboard
     defaults: { _controller:CoutureTailleurBundle:Tailleur:dashboard }

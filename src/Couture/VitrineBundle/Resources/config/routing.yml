@@ -1,0 +1,12 @@
+
+index:
+    path:     /index
+    defaults: { _controller: CoutureVitrineBundle:Vitrine:index }
+
+licence:
+    path:     /licence
+    defaults: { _controller: CoutureVitrineBundle:Vitrine:licence }
+
+apropos:
+    path:     /apropos
+    defaults: { _controller: CoutureVitrineBundle:Vitrine:apropos }
