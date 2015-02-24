@@ -291,3 +291,33 @@ footer a {
 {
     cursor: pointer;
 }
+
+.cachet-licence
+{
+    background: url('../images/cachet-tbss.png');
+    width: 190px;
+    height: 195px;
+    float: right;
+    text-decoration: underline;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.text-italic
+{
+    font-style: italic;
+    margin-top: 25px;
+}
+
+.container .licence
+{
+    text-align: justify;
+    padding: 10%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+footer .copyright img
+{
+    width: 55px;
+}
