@@ -1,0 +1,72 @@
+{#% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %#}
+{% extends '::base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.show.show'|trans({'%entity%': 'Client'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+    
+    <div class="row">
+        <div class="span12 alert alert-success"><h1 class="titre">Coutures de : {{ entity.nom }} {{ entity.prenom }} {{ entity.telephone }} </h1></div>
+    </div>
+    
+        <div class="row">
+        <div class="span12">
+            
+                
+                <div class="panel panel-success">
+                    <div class="panel-heading "><h3 class="panel-title"> Couture(s) <span class="badge">{{ coutures|length }}</span></h3></div>
+                    <div class="panel-body">
+                        <table class="table table-striped table-condensed ">
+                            <tr>
+                                <th>Date</th>
+                                <th>Libellé </th>
+                                <th>Tissu </th>
+                                <th>Etat </th>
+                            </tr>
+                            {% for couture in coutures %}
+                            <tr>
+                                <td><a href="{{ path('couture_show', { 'id': couture.id }) }}">{{couture.datec|date('d-m-Y')}}</a></td>
+                                <td>{{couture.libelle}}</td>
+                                <td>{{couture.tissu}}</td>
+                                <td>{% if couture.etat == 0 %} En cours {% else %} Terminé {% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    <!--/div-->
+
+    
+    
+    <div class="row">
+        <div class="span12 bouton_action">
+            <div class="float-left">
+                <a class="btn btn-inverse" href="{{ path('client') }}">
+                    Clients
+                </a>
+            </div>
+            <div class="float-left">
+                <a class="btn btn-primary" href="{{ path('liste_factures', { 'id': entity.id }) }}">
+                    Factures de {{ entity.prenom }} {{ entity.nom }}
+                </a>
+            </div>
+            <!--div class="float-left">
+                <a class="btn btn-primary" href="{{ path('client_edit', { 'id': entity.id }) }}">
+                    {{ 'views.recordactions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                </a>
+            </div>
+            <div class="float-left">
+                <form action="{{ path('client_delete', { 'id': entity.id }) }}" method="post">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    {#{ form_widget(delete_form) }#}
+                    <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                </form>
+            </div-->
+        </div>
+    </div>
+{% endblock %}

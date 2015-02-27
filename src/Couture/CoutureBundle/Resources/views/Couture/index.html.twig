@@ -45,7 +45,7 @@
                 {{ form_row(filterForm.tissu) }}
                 {#{ form_row(filterForm.detail) }}
                 {{ form_row(filterForm.iduser) }#}
-                {{ form_row(filterForm.etat) }}
+                {#{ form_row(filterForm.etat) }#}
                 {{ form_rest(filterForm) }}
 
                 <p>
@@ -70,8 +70,9 @@
             <!--th>Id</th>
             <th>Datec</th>
             <th>Datemod</th-->
+            <th>Clients</th>
             <th>Modèles</th>
-            <th>Datefin</th>
+            <th>Date finalisation</th>
             <th>Prix</th>
             <th>Tissu</th>
             <!--th>Detail</th>
@@ -86,6 +87,7 @@
             <!--td><a href="{{ path('couture_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{% if entity.datec %}{{ entity.datec|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td-->
+            <td>{{ entity.client.infosClient }}</td>
             <td>{{ entity.modele.libelle }}</td>
             <td>{% if entity.datefin %}{{ entity.datefin|date('d M Y') }}{% endif %}</td>
             
@@ -93,14 +95,17 @@
             <td>{{ entity.tissu }}</td>
             <!--td>{{ entity.detail }}</td>
             <td>{{ entity.iduser }}</td-->
-            <td>{% if entity.etat == 0 %}{{ entity.etat }} {{ entity.etat }}{% endif %}</td>
+            <td>{% if entity.etat == 0 %} En cours {% else %} Terminé {% endif %}</td>
             <td>
-        <a class="btn btn-mini" href="{{ path('couture_show', { 'id': entity.id }) }}">
+        <a class="btn btn-info" href="{{ path('couture_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('couture_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-inverse" href="{{ path('couture_edit', { 'id': entity.id }) }}">
             {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
-        </a>            </td>
+        </a>
+        {% if entity.etat == 0 %}  <a class="btn btn-success" href="{{ path('cloturer_couture', { 'id': entity.id, 'destination': 'couture' }) }}">
+            Clôturer
+        </a> {% endif %}            </td>
         </tr>
     {% endfor %}
     </tbody>

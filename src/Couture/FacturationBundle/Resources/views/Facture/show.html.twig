@@ -28,7 +28,7 @@
         
     </div>
     <div class="row">
-        <div class="span12 alert alert-success"><h1 class="titre">Facture N°: {{ entity.couture.client.id }}{{ entity.id }}-{{ entity.date|date('dm') }}</h1></div>
+        <div class="span12 alert alert-success  infos-client"><h1 class="titre">Facture N°: {{ entity.couture.client.id }}{{ entity.id }}-{{ entity.date|date('my') }}</h1></div>
     </div>
     <div class="row">
         <div class="span5 ">
@@ -37,6 +37,7 @@
                 <div class="panel-body">
 
                     <form class="form-horizontal">
+                        <div class="infos-client">
                         <fieldset>        
 
                             <p class="control-group">
@@ -64,32 +65,14 @@
                                 <!--/div-->
                             </p>
 
-
-                            <!--div class="control-group">
-                                <label class="control-label">Id</label>
-                                <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.id }}</span>            </div>
-                            </div>        <div class="control-group">
-                                <label class="control-label">Date</label>
-                                <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.date|date('Y-m-d H:i:s') }}</span>            </div>
-                            </div>        <div class="control-group">
-                                <label class="control-label">Datemod</label>
-                                <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.datemod|date('Y-m-d H:i:s') }}</span>            </div>
-                            </div>        <div class="control-group">
-                                <label class="control-label">Datec</label>
-                                <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.datec|date('Y-m-d H:i:s') }}</span>            </div>
-                            </div>        <div class="control-group">
-                                <label class="control-label">Iduser</label>
-                                <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.iduser }}</span>            </div>
-                            </div>        <div class="control-group">
-                                <label class="control-label">Avance</label>
-                                <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.avance }}</span>            </div>
-                            </div-->    </fieldset>
+ </fieldset>
+                                </div>
                     </form>
                 </div>
             </div>
 
         </div>
-        <div class="span6 classe-masquee">
+        <div class="span7 classe-masquee">
             <div class="panel panel-success background_infos classe-masquee">
                 <div class="panel-heading"><h3 class="panel-title">Informations Facture</h3></div>
                 <div class="panel-body">
@@ -188,16 +171,16 @@
 
     <div class="span12 classe-masquee">
         <div class="panel panel-success">
-            <div class="panel-heading"><h3 class="panel-title">Informations Modèle <!--span class="badge">3</span--></h3></div>
+            <div class="panel-heading"><h3 class="panel-title">Informations Modèle <span class="badge">{{ entity.couture.modele.libelle }}</span></h3></div>
             <div class="panel-body">
                 <form class='table-details'>
                     <fieldset>
-                        <p class="control-group">
+                        <!--p class="control-group">
                             <label class="control-label">Libellé</label>
                             <!--div class=""-->
-                            <span class="">{{ entity.couture.modele.libelle }}</span>            
-                            <!--/div-->
-                        </p>
+                            <!--span class="">{{ entity.couture.modele.libelle }}</span>            
+                            <!--/div>
+                        </p-->
 
                         <div class="controls">
                             <span class="image-responsive-modele">
@@ -219,7 +202,7 @@
 <div class="row">
 <div class='span12 bouton_action classe-masquee'>
     <div class="float-left">
-        <a class="btn" href="{{ path('facture') }}">
+        <a class="btn btn-twitter" href="{{ path('facture') }}">
             {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
     </div>
@@ -240,6 +223,25 @@
             Imprimer
         </a>
     </div>
+        
+    {% if entity.etatfacture.libelle == 'Initial' %}  
+        <div class="float-left">
+            <a class="btn btn-info" href="{{ path('valider_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
+                Valider
+            </a>
+        </div>
+    {% endif %} 
+    
+    {% if entity.etatfacture.libelle != 'Réglé' %}  
+        <div class="float-left">
+            <a class="btn btn-success" href="{{ path('regler_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
+                Régler
+            </a>
+        </div>
+    {% endif %} 
+        
+        
+    
 </div>
         </div>
 

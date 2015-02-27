@@ -53,9 +53,10 @@
     </div>
                 </div>
 
-    <div class="span12">
+    <div class="row">
+                <div class="span12">
     
-        <div class="row">
+        
         <div class="panel panel-success">
                     <div class="panel-heading"><h3 class="panel-title">La liste des Clients<span class="badge">{{ entities|length }}</span></h3></div>
                     <div class="panel-body">
@@ -85,10 +86,10 @@
             <!--td>{% if entity.datec %}{{ entity.datec|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{{ entity.iduser }}</td-->
             <td>
-        <a class="btn btn-mini" href="{{ path('client_show', { 'id': entity.id }) }}">
+        <a class="btn btn-info" href="{{ path('client_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('client_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-inverse" href="{{ path('client_edit', { 'id': entity.id }) }}">
             {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
             <!--span class="glyphicon glyphicon-edit"> </span-->
         </a>            </td>

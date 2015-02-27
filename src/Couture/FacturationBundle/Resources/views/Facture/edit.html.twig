@@ -7,7 +7,7 @@
 
 {% block page %}
     <div class="row">
-        <div class="span12 alert alert-success"><h1 class="titre">Modification Facture : {{ entity.id }} </h1></div>
+        <div class="span12 alert alert-success"><h1 class="titre">Modification Facture : {{ entity.couture.client.id }}{{ entity.id }}-{{ entity.date|date('my') }} </h1></div>
     </div>
 
 <div class='row'>

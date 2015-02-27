@@ -37,7 +37,7 @@
             {% form_theme filterForm with ['CoutureClientBundle:Client:perso_input_bootstrap.html.twig'] %}
             <form class="well" action="{{ path('modele') }}" method="get" {{ form_enctype(filterForm) }}>
                 {#{ form_row(filterForm.id) }#}
-                {{ form_row(filterForm.libelle) }}
+                {#{ form_row(filterForm.libelle) }#}
                 {#{ form_row(filterForm.description) }}
                 {{ form_row(filterForm.datec) }}
                 {{ form_row(filterForm.iduser) }}
@@ -83,10 +83,10 @@
             <td>{{ entity.iduser }}</td>
             <td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td-->
             <td>
-        <a class="btn btn-mini" href="{{ path('modele_show', { 'id': entity.id }) }}">
+        <a class="btn btn-info" href="{{ path('modele_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('modele_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-inverse" href="{{ path('modele_edit', { 'id': entity.id }) }}">
             {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>            </td>
         </tr>

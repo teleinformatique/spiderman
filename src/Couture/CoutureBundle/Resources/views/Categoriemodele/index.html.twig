@@ -73,10 +73,10 @@
             <td>{{ entity.libelle }}</td>
             <!--td>{{ entity.description }}</td-->
             <td>
-        <a class="btn btn-mini" href="{{ path('categorieModele_show', { 'id': entity.id }) }}">
+        <a class="btn btn-info" href="{{ path('categorieModele_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('categorieModele_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-inverse" href="{{ path('categorieModele_edit', { 'id': entity.id }) }}">
             {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>            </td>
         </tr>

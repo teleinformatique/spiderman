@@ -314,5 +314,48 @@ class FactureController extends Controller
         ;
     }
     
+    public function validerAction(Facture $entity, $destination)
+    {
+        $em = $this->getDoctrine()->getManager();
+//
+//        $entity = $em->getRepository('CoutureFacturationBundle:Facture')->find($id);
+//
+//        if (!$entity) {
+//            throw $this->createNotFoundException('Unable to find Facture entity.');
+//        }
+
+        
+        /*
+         * il présente des erreurs pour le moment
+         */
+        $etatFacture = $em->getRepository('CoutureFacturationBundle:Etatfacture')->find(2);
+        $entity = $entity->setEtatFacture($etatFacture);
+
+            $em->persist($entity);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
+
+        return $this->redirect($this->generateUrl('facture'));
+        
+    }
+    
+    public function reglerAction(Facture $entity, $destination)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        
+        
+        /*
+         * il présente des erreurs pour le moment
+         */
+        $etatFacture = $em->getRepository('CoutureFacturationBundle:Etatfacture')->find(3);
+        $entity = $entity->setEtatFacture($etatFacture);
+
+            $em->persist($entity);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
+        return $this->redirect($this->generateUrl("facture"));
+    }
+    
    
 }

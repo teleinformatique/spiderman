@@ -11,7 +11,7 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrapView;
 
-use Couture\ClientBundle\Entity\Client;
+use Couture\ClientBundle\Entity\Client as Client;
 use Couture\ClientBundle\Form\ClientType;
 use Couture\ClientBundle\Form\ClientFilterType ; 
 use Couture\CoutureBundle\Entity\Couture as Couture;
@@ -184,30 +184,11 @@ class ClientController extends Controller
         
         
         /*
-         * requete pour les dernières factures du client
+         * requete pour les dernières 3 factures et coutures du client
          */
         
         $factures = $entity->getLastFactures($id, 3, $em);
         $coutures = $entity->getLastCoutures($id, 3, $em);
-        /* ajouter ce matin
-        
-        $req="SELECT f.date, ct.prix "
-                . "FROM CoutureFacturationBundle:Facture f, CoutureCoutureBundle:Couture ct, CoutureClientBundle:Client c "
-                . " WHERE f.couture = ct.id"
-                . " AND ct.client = c.id"
-                . " AND c.id=?1"
-                . " ORDER BY f.date DESC";
-                
-        $query = $em->createQuery($req);
-        $query->setParameter(1, $id);
-//        $query->setParameter(2, 3);
-        $factures = $query->getResult();
-//        return $factures;
-        //var_dump($factures);
-//        print '<pret>';
-//        //Debug::dump($factures);
-//        print '</pret>';
-        //die();
         
         /*
          * Fin de la requete
@@ -331,4 +312,143 @@ class ClientController extends Controller
             ->getForm()
         ;
     }
+    
+    
+    
+    /**
+    * Get results from paginator and get paginator view for coutures d'un client.
+    *
+    */
+    protected function paginatorCouturesClient($queryBuilder)
+    {
+        // Paginator
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $pagerfanta = new Pagerfanta($adapter);
+        $currentPage = $this->getRequest()->get('page', 1);
+        $pagerfanta->setCurrentPage($currentPage);
+        $entities = $pagerfanta->getCurrentPageResults();
+
+        // Paginator - route generator
+        $me = $this;
+        $routeGenerator = function($page) use ($me)
+        {
+            return $me->generateUrl('liste_coutures', array('page' => $page));
+        };
+
+        // Paginator - view
+        $translator = $this->get('translator');
+        $view = new TwitterBootstrapView();
+        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
+            'proximity' => 3,
+            'prev_message' => $translator->trans('views.index.pagprev', array(), 'JordiLlonchCrudGeneratorBundle'),
+            'next_message' => $translator->trans('views.index.pagnext', array(), 'JordiLlonchCrudGeneratorBundle'),
+        ));
+
+        return array($entities, $pagerHtml);
+    }
+    
+    
+    /**
+    * Get results from paginator and get paginator view for factures d'un client.
+    *
+    */
+    protected function paginatorFacturesClient($queryBuilder)
+    {
+        // Paginator
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $pagerfanta = new Pagerfanta($adapter);
+        $currentPage = $this->getRequest()->get('page', 1);
+        $pagerfanta->setCurrentPage($currentPage);
+        $entities = $pagerfanta->getCurrentPageResults();
+
+        // Paginator - route generator
+        $me = $this;
+        $routeGenerator = function($page) use ($me)
+        {
+            return $me->generateUrl('client', array('page' => $page));
+        };
+
+        // Paginator - view
+        $translator = $this->get('translator');
+        $view = new TwitterBootstrapView();
+        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
+            'proximity' => 3,
+            'prev_message' => $translator->trans('views.index.pagprev', array(), 'JordiLlonchCrudGeneratorBundle'),
+            'next_message' => $translator->trans('views.index.pagnext', array(), 'JordiLlonchCrudGeneratorBundle'),
+        ));
+
+        return array($entities, $pagerHtml);
+    }
+    
+    public function listeCouturesAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+
+        $entity = $em->getRepository('CoutureClientBundle:Client')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Client entity.');
+        }
+        
+        
+        /*
+         * requete pour les dernières 3 factures et coutures du client
+         */
+        
+        //$factures = $entity->getLastFactures($id, null, $em);
+        $coutures = $entity->getLastCoutures($id, null, $em);
+        
+        /*
+         * Fin de la requete
+         */
+        //list($filterForm, $queryBuilder) = $this->filter();
+        //list($coutures, $pagerHtml) = $this->paginatorCouturesClient($coutures);
+        
+        //$deleteForm = $this->createDeleteForm($id);
+        
+        return $this->render('CoutureClientBundle:Client:liste_coutures.html.twig', array(
+                "entity" => $entity,
+                'coutures'    => $coutures,
+            
+            ));
+
+//        return array(
+//            'entity'      => $entity,
+//            //'delete_form' => $deleteForm->createView(),
+//            //'factures'    => $factures,
+//            'coutures'    => $coutures,
+//        );
+        
+    }
+    
+    
+    
+        public function listeFacturesAction($id)
+        {
+            $em = $this->getDoctrine()->getManager();
+
+
+            $entity = $em->getRepository('CoutureClientBundle:Client')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Client entity.');
+            }
+
+
+            /*
+             * requete pour les dernières 3 factures et coutures du client
+             */
+
+            $factures = $entity->getLastFactures($id, null, $em);
+
+            return $this->render('CoutureClientBundle:Client:liste_factures.html.twig', array(
+                    "entity" => $entity,
+                    'factures'    => $factures,
+
+                ));
+
+    }
+    
+    
 }

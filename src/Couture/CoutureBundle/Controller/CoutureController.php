@@ -302,4 +302,19 @@ class CoutureController extends Controller
             ->getForm()
         ;
     }
+    
+    /*
+     * Clôturer une couture, c'est à dire la mettre à l'état terminé.
+     */
+    public function cloturerAction(Couture $entity, $destination)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity->setEtat(1);
+
+            $em->persist($entity);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
+        return $this->redirect($this->generateUrl("couture"));
+    }
+    
 }
