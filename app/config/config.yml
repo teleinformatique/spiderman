@@ -70,10 +70,22 @@ doctrine:
 #        auto_mapping: true
         entity_managers:
             default:
+            
+                
                 auto_mapping: true
                 mappings:
                     ApplicationSonataUserBundle: ~
         #        auto_mapping: true
+        
+                dql:
+                    datetime_functions:
+                        date:     Luxifer\DQL\Datetime\Date
+                        datediff: Luxifer\DQL\Datetime\DateDiff
+            
+
+        
+        
+        
 
 # Swiftmailer Configuration
 swiftmailer:

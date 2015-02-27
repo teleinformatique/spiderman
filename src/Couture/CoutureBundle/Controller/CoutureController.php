@@ -317,4 +317,20 @@ class CoutureController extends Controller
         return $this->redirect($this->generateUrl("couture"));
     }
     
+    public function dashboardAction() {
+        
+        $em = $this->getDoctrine()->getManager();
+        $coutures = $em->getRepository('CoutureCoutureBundle:Couture')->find(1);
+        //$em = $this->getDoctrine()->getManager();
+        //$coutures->getStatistique($em);
+        $coutures = $coutures->getStatistique($em);
+        //\Doctrine\Common\Util\Debug::dump($coutures);die;
+        return $this->render("CoutureTailleurBundle:Tailleur:dashboard.html.twig",
+                                    array('coutures' => $coutures,
+                                        
+                                    )
+                   );
+        
+    }
+    
 }

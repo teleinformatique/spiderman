@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9021a97b2198569382e811518c230469",
+    "hash": "d51b6a52cac93d2d94cc21ed2c0269d7",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1631,6 +1631,54 @@
                 "form"
             ],
             "time": "2014-12-15 09:06:44"
+        },
+        {
+            "name": "luxifer/doctrine-functions",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/luxifer/doctrine-functions.git",
+                "reference": "10a7ef24e718c1734749a2830c0b33e68b932332"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luxifer/doctrine-functions/zipball/10a7ef24e718c1734749a2830c0b33e68b932332",
+                "reference": "10a7ef24e718c1734749a2830c0b33e68b932332",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": ">=2.2.3",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Luxifer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Viel",
+                    "email": "luxifer666@gmail.com",
+                    "homepage": "http://blog.luxifer.fr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Doctrine DQL Functions for Mysql",
+            "homepage": "http://luxifer.github.io/doctrine-functions/",
+            "keywords": [
+                "database",
+                "dql",
+                "mysql"
+            ],
+            "time": "2015-02-01 12:01:11"
         },
         {
             "name": "michelf/php-markdown",
@@ -3649,7 +3697,8 @@
         "sonata-project/easy-extends-bundle": 20,
         "sonata-project/intl-bundle": 20,
         "jms/translation-bundle": 20,
-        "sonata-project/user-bundle": 20
+        "sonata-project/user-bundle": 20,
+        "luxifer/doctrine-functions": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

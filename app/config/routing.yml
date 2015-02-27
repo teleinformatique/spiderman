@@ -89,7 +89,7 @@ a_propos:
     
 dashboard:
     path: /dashboard
-    defaults: { _controller:CoutureTailleurBundle:Tailleur:dashboard }
+    defaults: { _controller:CoutureCoutureBundle:Couture:dashboard }
     
 connexion:
     path: /connexion

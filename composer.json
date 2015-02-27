@@ -35,7 +35,8 @@
         "jms/translation-bundle": "1.1.*@dev",
         
         "sonata-project/doctrine-orm-admin-bundle": "*",
-        "sonata-project/user-bundle": "2.2.*@dev"
+        "sonata-project/user-bundle": "2.2.*@dev",
+        "luxifer/doctrine-functions": "dev-master"
         
     },
     "require-dev": {

@@ -24,6 +24,7 @@ return array(
     'Negotiation' => array($vendorDir . '/willdurand/negotiation/src'),
     'Michelf' => array($vendorDir . '/michelf/php-markdown'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
+    'Luxifer\\' => array($vendorDir . '/luxifer/doctrine-functions/src'),
     'Lexik\\Bundle\\FormFilterBundle' => array($vendorDir . '/lexik/form-filter-bundle'),
     'Knp\\Menu\\' => array($vendorDir . '/knplabs/knp-menu/src'),
     'JsonpCallbackValidator' => array($vendorDir . '/willdurand/jsonp-callback-validator/src'),
