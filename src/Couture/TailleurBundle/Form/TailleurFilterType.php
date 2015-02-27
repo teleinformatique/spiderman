@@ -15,9 +15,9 @@ class TailleurFilterType extends AbstractType
     {
         $builder
             //->add('id', 'filter_number_range')
-            ->add('nom', 'filter_text')
-            ->add('prenom', 'filter_text')
-//            ->add('telephone', 'filter_text')
+            //->add('nom', 'filter_text')
+            //->add('prenom', 'filter_text')
+            ->add('telephone', 'filter_text')
 //            ->add('email', 'filter_text')
 //            ->add('login', 'filter_text')
 //            ->add('password', 'filter_text')
@@ -27,6 +27,14 @@ class TailleurFilterType extends AbstractType
 //            ->add('datemod', 'filter_date_range')
 //            ->add('iduser', 'filter_number_range')
 //            ->add('datec', 'filter_date_range')
+                ->add('nom','entity', array(
+                'class' => 'CoutureTailleurBundle:Tailleur',
+                'property' => 'nom',
+                'expanded' => false,
+                'multiple' => false,
+                'empty_value' => 'Filtrer par nom de famille',
+                'required' => false,
+                ))
         ;
 
         $listener = function(FormEvent $event)

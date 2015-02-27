@@ -259,13 +259,14 @@ class Client
         return $this->iduser;
     }
     
-    public function getLastFactures($id, $nombreFactures, $em)
+    public function getLastFactures($id, $nombreFactures= null, $em)
     {
         
-        $req="SELECT f.date, ct.prix  "
-                . "FROM CoutureFacturationBundle:Facture f, CoutureCoutureBundle:Couture ct, CoutureClientBundle:Client c "
+        $req="SELECT f.id, e.libelle, f.date, ct.prix  "
+                . "FROM CoutureFacturationBundle:Facture f, CoutureFacturationBundle:Etatfacture e, CoutureCoutureBundle:Couture ct, CoutureClientBundle:Client c "
                 . "WHERE f.couture = ct.id "
                 . "AND ct.client = c.id "
+                . "AND f.etatfacture = e.id "
                 . "AND c.id=?1 "
                 . "ORDER BY f.date DESC " ;
                 //. " LIMIT 0, ?2 ";
@@ -286,10 +287,10 @@ class Client
                     
     }
     
-    public function getLastCoutures($id, $nombreCoutures, $em)
+    public function getLastCoutures($id, $nombreCoutures = null, $em)
     {
         
-        $req="SELECT ct.datec, ct.tissu, m.libelle  "
+        $req="SELECT ct.id, ct.etat, ct.datec, ct.tissu, m.libelle  "
                 . "FROM CoutureCoutureBundle:Couture ct, CoutureClientBundle:Client c, CoutureCoutureBundle:Modele m  "
                 . "WHERE ct.modele = m.id "
                 . "AND ct.client = c.id "

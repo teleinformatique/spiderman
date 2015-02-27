@@ -56,15 +56,22 @@
                                 <th>Date</th>
                                 <th>Libellé </th>
                                 <th>Tissu </th>
+                                <th>Etat </th>
                             </tr>
                             {% for couture in coutures %}
                             <tr>
-                                <td><a href="#">{{couture.datec|date('d-m-Y')}}</a></td>
+                                <td><a href="{{ path('couture_show', { 'id': couture.id }) }}">{{couture.datec|date('d-m-Y')}}</a></td>
                                 <td>{{couture.libelle}}</td>
                                 <td>{{couture.tissu}}</td>
+                                <td>{% if couture.etat == 0 %} En cours {% else %} Terminé {% endif %}</td>
                             </tr>
                             {% endfor %}
                         </table>
+                        <div class="float-left table-details">
+                            <a class="btn btn-primary" href="{{ path('liste_coutures', { 'id': entity.id }) }}">
+                                Toutes
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="panel panel-success">
@@ -81,12 +88,17 @@
                             
                             {% for facture in factures %}
                             <tr>
-                                <td><a href="#">{{facture.date|date('d-m-Y')}}</a></td>
+                                <td><a href="{{ path('facture_show', { 'id': facture.id }) }}">{{facture.date|date('d-m-Y')}}</a></td>
                                 <td>{{facture.prix}}</td>
-                                <td>Ligne colonne  2 </td>
+                                <td>{{ facture.libelle }}</td>
                             </tr>
                             {% endfor %}
                         </table>
+                        <div class="float-right table-details">
+                            <a class="btn btn-primary" href="{{ path('liste_factures', { 'id': entity.id }) }}">
+                                Toutes
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

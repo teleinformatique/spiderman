@@ -71,7 +71,7 @@ class Facture
     /**
      * @var \Etatfacture
      *
-     * @ORM\ManyToOne(targetEntity="Etatfacture")
+     * @ORM\ManyToOne(targetEntity="Etatfacture", cascade={"persist", "remove"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="etatfacture", referencedColumnName="id")
      * })
@@ -241,7 +241,7 @@ class Facture
      * @param \Couture\FacturationBundle\Entity\Etatfacture $etatfacture
      * @return Facture
      */
-    public function setEtatfacture(Etatfacture $etatfacture = null)
+    public function setEtatfacture($etatfacture)
     {
         $this->etatfacture = $etatfacture;
 
@@ -257,4 +257,7 @@ class Facture
     {
         return $this->etatfacture;
     }
+    
+    
+    
 }

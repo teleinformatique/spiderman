@@ -5,6 +5,7 @@ namespace Couture\TailleurBundle\Entity;
 //use FOS\UserBundle\Model\User as BaseUser;
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Couture\CoutureBundle\Entity\Couture as Couture ;
 
 /**
  * Tailleur
@@ -388,17 +389,29 @@ class Tailleur extends BaseUser
         public function getStatistique($em)
     {
         
-        $req="SELECT count(ct.id) as nbreCouture, MONTH(ct.datec) as mois"
-                . "FROM CoutureCoutureBundle:Couture ct  "
-                . "GROUP BY mois"
-              ;
+        $req="SELECT COUNT(*), DATE(datec) AS valeur "
+                . "FROM CoutureCoutureBundle:Couture " ;
+//                . "GROUP BY valeur " ;
+        
+         
+//         $couture = new Couture();
+//        $query = $couture->createQueryBuilder('ct')
+//                    ->select('count(ct) as nb, DATE(datec) as valeur')
+//                    ->groupBy('valeur') ;
+                    //->orderBy('v.date', 'ASC') ;
+              
                 
-
+//        $query->setParameters(array(
+//                'studentId'   => $studentId, 
+//                'PaymentData' => $compareTo->format('Y-m-d')) );
+//        
+//                $query->setParameter(1, $id);
+                
         $query = $em->createQuery($req);
-       
+       $query->groupBy('valeur');
         $coutures = $query->getResult();
         \Doctrine\Common\Util\Debug::dump($coutures);die;
-        return $coutures;
+        //return $coutures;
         
 
                     

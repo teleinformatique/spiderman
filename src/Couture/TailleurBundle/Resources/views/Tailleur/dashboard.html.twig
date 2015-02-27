@@ -1,5 +1,22 @@
 {% extends "::base.html.twig" %}
 
 {% block page  %}
+    <table>
+        <tr>
+            <th> #</th>
+            <th> date</th>
+            <th> nombre de couture </th>
+        </tr>
+        {% for key, couture in coutures %}
+            <tr>
+                <td> {{ key + 1 }}</td>
+                <td> {{ couture.valeur|date('d M Y') }} </td>
+                <td> {{ couture.nb }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+        
+        
     
 {% endblock%}

@@ -38,7 +38,7 @@
             <form class="well" action="{{ path('tailleur') }}" method="get" {{ form_enctype(filterForm) }}>
                 {#{ form_row(filterForm.id) }#}
                 {{ form_row(filterForm.nom) }}
-                {{ form_row(filterForm.prenom) }}
+                {#{ form_row(filterForm.prenom) }#}
                 {#{ form_row(filterForm.telephone) }}
                 {{ form_row(filterForm.email) }}
                 {{ form_row(filterForm.login) }}
@@ -101,10 +101,10 @@
             <!--td>{{ entity.iduser }}</td-->
             <!--td>{% if entity.datec %}{{ entity.datec|date('Y-m-d H:i:s') }}{% endif %}</td-->
             <td>
-        <a class="btn btn-mini" href="{{ path('tailleur_show', { 'id': entity.id }) }}">
+        <a class="btn btn-info" href="{{ path('tailleur_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('tailleur_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-inverse" href="{{ path('tailleur_edit', { 'id': entity.id }) }}">
             {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>            </td>
         </tr>

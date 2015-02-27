@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block page %}<div class="row">
-        <div class="span12 alert alert-success"><h1 class="titre">Modification couture : {{ entity.id }} {{ entity.infosCouture }} </h1></div>
+        <div class="span12 alert alert-success"><h1 class="titre">Modification couture : {{ entity.client.id }}{{ entity.id }}/{{ entity.datec|date('my') }} {{ entity.client.infosClient }} </h1></div>
     </div>
 
 <div class='row'>

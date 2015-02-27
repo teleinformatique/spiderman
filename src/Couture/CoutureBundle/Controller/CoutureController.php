@@ -302,4 +302,35 @@ class CoutureController extends Controller
             ->getForm()
         ;
     }
+    
+    /*
+     * Clôturer une couture, c'est à dire la mettre à l'état terminé.
+     */
+    public function cloturerAction(Couture $entity, $destination)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity->setEtat(1);
+
+            $em->persist($entity);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
+        return $this->redirect($this->generateUrl("couture"));
+    }
+    
+    public function dashboardAction() {
+        
+        $em = $this->getDoctrine()->getManager();
+        $coutures = $em->getRepository('CoutureCoutureBundle:Couture')->find(1);
+        //$em = $this->getDoctrine()->getManager();
+        //$coutures->getStatistique($em);
+        $coutures = $coutures->getStatistique($em);
+        //\Doctrine\Common\Util\Debug::dump($coutures);die;
+        return $this->render("CoutureTailleurBundle:Tailleur:dashboard.html.twig",
+                                    array('coutures' => $coutures,
+                                        
+                                    )
+                   );
+        
+    }
+    
 }

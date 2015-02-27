@@ -329,15 +329,12 @@ class ModeleController extends Controller
        }
     }
     
-    
+    /*
+     * Les modèles de la page d'accueil.
+     */
     public function vitrineAction()
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $entities = $em->getRepository('CoutureCoutureBundle:Modele')->findAll();
-//        
-//        //\Doctrine\Common\Util\Debug::dump($entities);
-//        
-////        $entities = getAllModeles($em);
+
         list($filterForm, $queryBuilder) = $this->filter();
 
         list($entities, $pagerHtml) = $this->pagination($queryBuilder);
@@ -356,7 +353,9 @@ class ModeleController extends Controller
         
     }
     
-    
+    /*
+     * pour la pagination des modèles de la page d'accueil.
+     */
     protected function pagination($queryBuilder)
     {
         // Paginator

@@ -5,6 +5,7 @@ namespace Couture\CoutureBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Couture\ClientBundle\Entity\Client as Client;
 use Couture\CoutureBundle\Entity\Mesure as Mesure ;
+use Doctrine\ORM\Query\ResultSetMapping as ResultSetMapping;
 
 /**
  * Couture
@@ -413,4 +414,25 @@ class Couture
 ////        var_dump($factures);
        die;
     }
+    
+    public function getStatistique($em)
+    {
+        
+        $sql = "SELECT COUNT(*) as nb, DATE(datec) AS valeur "
+            ."FROM couture "
+            ."GROUP BY valeur ";
+
+
+            $rsm = new ResultSetMapping;
+            $rsm->addScalarResult('nb', 'nb');
+            $rsm->addScalarResult('valeur', 'valeur');
+            $query = $em->createNativeQuery($sql, $rsm);
+            $coutures = $query->getResult();
+            //\Doctrine\Common\Util\Debug::dump($coutures);die;
+            
+            return $coutures;
+
+                    
+    }
+    
 }

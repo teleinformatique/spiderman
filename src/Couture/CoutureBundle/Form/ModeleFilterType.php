@@ -15,16 +15,20 @@ class ModeleFilterType extends AbstractType
     {
         $builder
             //->add('id', 'filter_number_range')
-            ->add('libelle', 'filter_text')
+            //->add('libelle', 'filter_text')
             ->add('categoriemodele','entity', array(
                             'class' => 'CoutureCoutureBundle:Categoriemodele',
                             'property' => 'libelle',
                             'expanded' => false,
-                            'multiple' => false
+                            'multiple' => false,
+                            'empty_value' => 'Choisir une catégorie',
+                            'required' => false,
                             ))
             ->add('genre', 'choice', array(
-                        'choices'   => array('0' => 'Femme', '1' => 'Homme'),
-                        'required'  => true,))
+                            'choices'   => array('0' => 'Femme', '1' => 'Homme'),
+                            'empty_value' => 'Filtrer par genre',
+                            'required' => false,
+                ))
 //            ->add('description', 'filter_text')
 //            ->add('datec', 'filter_date_range')
 //            ->add('iduser', 'filter_number_range')

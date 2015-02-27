@@ -22,7 +22,27 @@ couture_client:
     resource: "@CoutureClientBundle/Controller/"
     type:     annotation
     prefix:   /atelier
+
+  
+valider_facture:
+    path: /{id}/valider-facture/{destination}
+    defaults: { _controller:CoutureFacturationBundle:Facture:valider }
+
+regler_facture:
+    path: /{id}/regler-facture/{destination}
+    defaults: { _controller:CoutureFacturationBundle:Facture:regler }
+
+cloturer_couture:
+    path: /{id}/cloturer-couture/{destination}
+    defaults: { _controller:CoutureCoutureBundle:Couture:cloturer }    
     
+liste_coutures:
+    path: /{id}/liste-coutures
+    defaults: { _controller:CoutureClientBundle:Client:listeCoutures }
+
+liste_factures:
+    path: /{id}/liste-factures
+    defaults: { _controller:CoutureClientBundle:Client:listeFactures }
 # app/config/routing.yml
 #fos_user:
 #    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
@@ -52,14 +72,24 @@ app:
     
 
 vitrineIndex:
-    path: /vitrine-index
+    path: /
     defaults: { _controller:CoutureCoutureBundle:Modele:vitrine }
     
+licence:
+    path: /licence
+    defaults: { _controller:CoutureVitrineBundle:Vitrine:licence }
+    
+
+a_propos:
+    path: /a-propos
+    defaults: { _controller:CoutureVitrineBundle:Vitrine:apropos }
+
+
 
     
 dashboard:
     path: /dashboard
-    defaults: { _controller:CoutureTailleurBundle:Tailleur:dashboard }
+    defaults: { _controller:CoutureCoutureBundle:Couture:dashboard }
     
 connexion:
     path: /connexion

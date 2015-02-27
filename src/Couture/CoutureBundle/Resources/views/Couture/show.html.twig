@@ -6,7 +6,7 @@
 
 {% block page %}
     <div class="row">
-        <div class="span12 alert alert-success"><h1 class="titre">Couture : {{ entity.infosCouture }}</h1></div>
+        <div class="span12 alert alert-success"><h1 class="titre">Couture : {{ entity.client.id }}{{ entity.id }}-{{ entity.datec|date('my') }}  {{ entity.client.infosClient }}</h1></div>
     </div>
     <div class="row">
         <div class="span5 ">
@@ -83,7 +83,7 @@
         </div>
         
 </div>
-        <div class="span6">
+        <div class="span7">
         <div class="panel panel-success">
                     <div class="panel-heading"><h3 class="panel-title">Informations Couture </h3></div>
                     <div class="panel-body">
@@ -197,7 +197,7 @@
                         </form>
                     </div>
                 </div> </div>
-                <div class="span6">
+                <div class="span7">
                 <div class="panel panel-success">
                     <div class="panel-heading"><h3 class="panel-title">Informations Modèle <span class="badge">3</span></h3></div>
                     <div class="panel-body">
@@ -244,6 +244,15 @@
             <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
         </form>
     </div>
-        <a href="{{ path('facture_new', { 'id': entity.id }) }}"> Générer la facture </a>
+        <div class="float-left">
+        {% if entity.etat == 0 %}  
+            <a class="btn btn-success" href="{{ path('cloturer_couture', { 'id': entity.id, 'destination': 'couture' }) }}">
+                Clôturer
+            </a> 
+        {% endif %}
+        </div>
+        <div class="float-left"></div>
+        <a class="btn btn-inverse" href="{{ path('facture_new', { 'id': entity.id }) }}"> Générer la facture </a>
+        </div>
 </div>
 {% endblock %}
