@@ -245,10 +245,15 @@
         </form>
     </div>
         <div class="float-left">
-        {% if entity.etat == 0 %}  
+        {% if entity.etat == 1 %}  
             <a class="btn btn-success" href="{{ path('cloturer_couture', { 'id': entity.id, 'destination': 'couture' }) }}">
                 Clôturer
-            </a> 
+            </a>
+        {% else %}
+            <a class="btn btn-warning" href="{{ path('devalider_couture', { 'id': entity.id, 'destination': 'couture' }) }}">
+                Dévalider
+            </a>
+                    
         {% endif %}
         </div>
         <div class="float-left"></div>

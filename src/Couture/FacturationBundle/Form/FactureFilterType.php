@@ -20,14 +20,19 @@ class FactureFilterType extends AbstractType
 //            ->add('datec', 'filter_date_range')
 //            ->add('iduser', 'filter_number_range')
 //            ->add('avance', 'filter_number_range')
-            ->add('couture','entity', array(
-                'class' => 'CoutureCoutureBundle:Couture',
-                'property' => 'infosCouture',
+            ->add('etatfacture','entity', array(
+                'class' => 'CoutureFacturationBundle:Etatfacture',
+                'property' => 'libelle',
                 'expanded' => false,
                 'multiple' => false,
-                'empty_value' => 'Filtrer par Couture',
+                'empty_value' => 'Filtrer par Etat',
                 'required' => false,
                 ))
+//            ->add('etatfacture', 'choice', array(
+//                            'choices'   => array(1 => 'Initial', 2 => 'Validé', 3 => 'Réglé'),
+//                            'empty_value' => 'Choisir par Etat',
+//                            'required' => false,
+//                ))
         ;
 
         $listener = function(FormEvent $event)

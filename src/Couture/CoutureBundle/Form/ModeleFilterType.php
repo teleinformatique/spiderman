@@ -25,7 +25,7 @@ class ModeleFilterType extends AbstractType
                             'required' => false,
                             ))
             ->add('genre', 'choice', array(
-                            'choices'   => array('0' => 'Femme', '1' => 'Homme'),
+                            'choices'   => array(1 => 'Femme', 2 => 'Homme'),
                             'empty_value' => 'Filtrer par genre',
                             'required' => false,
                 ))

@@ -339,6 +339,22 @@ class FactureController extends Controller
         
     }
     
+    
+    public function devaliderAction(Facture $entity, $destination)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $etatFacture = $em->getRepository('CoutureFacturationBundle:Etatfacture')->find(1);
+        $entity = $entity->setEtatFacture($etatFacture);
+
+            $em->persist($entity);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
+
+        return $this->redirect($this->generateUrl('facture'));
+        
+    }
+    
     public function reglerAction(Facture $entity, $destination)
     {
         $em = $this->getDoctrine()->getManager();

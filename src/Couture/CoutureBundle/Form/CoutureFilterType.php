@@ -30,18 +30,18 @@ class CoutureFilterType extends AbstractType
                             'empty_value' => 'Filtrer par tissu',
                             'required' => false,
                             ))
-            ->add('modele','entity', array(
-                            'class' => 'CoutureCoutureBundle:Modele',
-                            'property' => 'libelle',
-                            'expanded' => false,
-                            'multiple' => false,
-                            'empty_value' => 'Filtrer par modèles',
-                            'required' => false,
-                ))
+//            ->add('modele','entity', array(
+//                            'class' => 'CoutureCoutureBundle:Modele',
+//                            'property' => 'libelle',
+//                            'expanded' => false,
+//                            'multiple' => false,
+//                            'empty_value' => 'Filtrer par modèles',
+//                            'required' => false,
+//                ))
             ->add('etat', 'choice', array(
-                        'choices'   => array('0' => 'En cours', '1' => 'Terminé'),
-                        'empty_value' => 'Choisir par Etat',
-                        'required' => false,
+                            'choices'   => array(1 => 'En cours', 2 => 'Terminé'),
+                            'empty_value' => 'Choisir par Etat',
+                            'required' => false,
                 ))
         ;
 

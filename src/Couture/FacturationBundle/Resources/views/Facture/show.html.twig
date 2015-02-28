@@ -230,15 +230,51 @@
                 Valider
             </a>
         </div>
-    {% endif %} 
-    
-    {% if entity.etatfacture.libelle != 'Réglé' %}  
         <div class="float-left">
             <a class="btn btn-success" href="{{ path('regler_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
                 Régler
             </a>
         </div>
     {% endif %} 
+    {% if entity.etatfacture.libelle == 'Validé'   %}  
+        
+        <div class="float-left">
+            <a class="btn btn-danger" href="{{ path('devalider_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
+                Dévalider
+            </a>
+        </div>
+        
+        <div class="float-left">
+            <a class="btn btn-success" href="{{ path('regler_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
+                Régler
+            </a>
+        </div>
+    {% else %}
+        {% if entity.etatfacture.libelle == 'Réglé'   %} 
+            <div class="float-left">
+                <a class="btn btn-danger" href="{{ path('devalider_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
+                    Dévalider
+                </a>
+            </div>
+        {% endif %}
+        
+            
+        
+    
+    {% endif %} 
+    
+    {#% if (entity.etatfacture.libelle != 'Réglé' or entity.etatfacture.libelle != 'Validé')  %}  
+        <div class="float-left">
+            <a class="btn btn-success" href="{{ path('devalider_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
+                Dévalider
+            </a>
+        </div>
+        <div class="float-left">
+            <a class="btn btn-success" href="{{ path('regler_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
+                Régler
+            </a>
+        </div>
+    {% endif %#} 
         
         
     
