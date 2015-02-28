@@ -13,6 +13,7 @@ class FactureType extends AbstractType
     {
         $builder
             ->add('date')
+            ->add('quantite')
             //->add('datemod')
             //->add('datec')
             //->add('iduser')

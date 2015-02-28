@@ -89,13 +89,13 @@
                             <p class="control-group">
                                 <label class="control-label">Désignation</label>
                                 <!--div class=""-->
-                                <span class="">{{ entity.couture.infosCouture }}</span>            
+                                <span class="">{% if entity.quantite %}{{ entity.quantite }} {% else %}  1 {% endif %} : {{ entity.couture.infosCouture }}</span>            
                                 <!--/div-->
                             </p>
                             <p class="control-group">
                                 <label class="control-label">Prix</label>
                                 <!--div class=""-->
-                                <span class="">{{ entity.couture.prix }}</span>            
+                                <span class="">{% if entity.quantite %}{{ entity.quantite * entity.couture.prix}} {% else %} {{ entity.couture.prix }} {% endif %}</span>            
                                 <!--/div-->
                             </p>    
                             <p class="control-group">
@@ -132,10 +132,10 @@
 
                 </tr>
                 <tr>
-                    <td>1</td>
+                    <td>{% if entity.quantite %}{{ entity.quantite }} {% else %} 1 {% endif %}</td>
                     <td> {{ entity.couture.modele.libelle }} </td>
                     <td> {{ entity.couture.prix }} FCFA</td>
-                    <td> {{ entity.couture.prix * 1}} FCFA</td>
+                    <td>{% if entity.quantite %}{{ entity.couture.prix * entity.quantite }} {% else %} {{ entity.couture.prix * 1}} {% endif %}  FCFA</td>
                 </tr>
                 <tr>
                     <td></td>
@@ -147,7 +147,7 @@
                     <td></td>
                     <td>NET à payer</td>
                     <td></td>
-                    <td id="net-a-payer" data-reste="{{ entity.couture.prix - entity.avance }}">{{ entity.couture.prix - entity.avance }} FCFA</td>
+                    <td id="net-a-payer" data-reste="{% if entity.quantite %}{{ entity.couture.prix * entity.quantite - entity.avance }} {% else %} {{ entity.couture.prix - entity.avance }} {% endif %}">{% if entity.quantite %}{{ entity.couture.prix * entity.quantite - entity.avance }} {% else %} {{ entity.couture.prix - entity.avance }} {% endif %} FCFA</td>
                 </tr>
             </table>
             <hr>
@@ -159,7 +159,7 @@
                 <div class="row">
     <div class="span12 classe-masquee">
         <div class="panel panel-danger">
-            <div class="panel-heading"><h3 class="panel-title">Reste à payer : <span class="badge">{{ entity.couture.prix - entity.avance }}</span></h3></div>
+            <div class="panel-heading"><h3 class="panel-title">Reste à payer : <span class="badge">{% if entity.quantite %}{{ entity.couture.prix * entity.quantite - entity.avance }} {% else %} {{ entity.couture.prix - entity.avance }} {% endif %}</span></h3></div>
 
 
         </div>
