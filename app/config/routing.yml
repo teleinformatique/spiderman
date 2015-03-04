@@ -50,6 +50,10 @@ liste_coutures:
 liste_factures:
     path: /{id}/liste-factures
     defaults: { _controller:CoutureClientBundle:Client:listeFactures }
+    
+generer_facture:
+    path: /{idCouture}/generer-facture
+    defaults: { _controller:CoutureFacturationBundle:Facture:generer }
 # app/config/routing.yml
 #fos_user:
 #    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

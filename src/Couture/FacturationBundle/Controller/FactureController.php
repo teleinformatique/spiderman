@@ -11,7 +11,7 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrapView;
 
-use Couture\FacturationBundle\Entity\Facture;
+use Couture\FacturationBundle\Entity\Facture as Facture;
 use Couture\FacturationBundle\Form\FactureType;
 use Couture\FacturationBundle\Form\FactureFilterType;
 use Couture\CoutureBundle\Entity\Couture as Couture; 
@@ -55,8 +55,13 @@ class FactureController extends Controller
     {
         $request = $this->getRequest();
         $session = $request->getSession();
-        $filterForm = $this->createForm(new FactureFilterType());
         $em = $this->getDoctrine()->getManager();
+        
+        //$factures = $em->getRepository('CoutureFacturationBundle:Facture')->find(1);
+        //$em->persist($factures);
+    
+        $filterForm = $this->createForm(new FactureFilterType()/*, new Facture ()*/);
+        //$em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('CoutureFacturationBundle:Facture')->createQueryBuilder('e');
 
         // Reset filter
@@ -372,6 +377,37 @@ class FactureController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
         return $this->redirect($this->generateUrl("facture"));
     }
-    
-   
+    /*
+     * Pour générer une facture à partir d'une couture
+     * si la couture était déja facturée, la fonction ne marchera pas. 
+     */
+   public function genererAction($idCouture)
+    {
+       //$couture = new Couture (); 
+       $em = $this->getDoctrine()->getManager();
+        $couture = $em->getRepository('CoutureCoutureBundle:Couture')->find($idCouture);
+        $facture = $em->getRepository('CoutureFacturationBundle:Facture')->findBy(array('couture' => $couture)) ;
+        
+        if ($facture) // la facture existe déja ! 
+        {
+        \Doctrine\Common\Util\Debug::dump($facture);
+        die;
+        
+        }
+        else // on crée la facture
+        {
+            \Doctrine\Common\Util\Debug::dump($couture);
+        die;
+        }
+        /*
+         * il présente des erreurs pour le moment
+         */
+        $etatFacture = $em->getRepository('CoutureFacturationBundle:Etatfacture')->find(3);
+        $entity = $entity->setEtatFacture($etatFacture);
+
+            $em->persist($entity);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
+        return $this->redirect($this->generateUrl("facture"));
+    }
 }

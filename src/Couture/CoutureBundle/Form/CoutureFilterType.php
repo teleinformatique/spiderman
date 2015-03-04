@@ -17,7 +17,7 @@ class CoutureFilterType extends AbstractType
 //            ->add('id', 'filter_number_range')
 //            ->add('datec', 'filter_date_range')
 //            ->add('datemod', 'filter_date_range')
-            //->add('datefin', 'filter_date_range')
+            ->add('datefin', 'filter_date_range')
             //->add('prix', 'filter_number_range')
             //->add('tissu', 'filter_text')
 //            ->add('detail', 'filter_text')

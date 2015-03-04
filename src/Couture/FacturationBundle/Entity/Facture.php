@@ -273,6 +273,9 @@ class Facture
         $this->quantite = $quantite;
     }
 
-    
+    public function chercherCouture ()
+    {
+        
+    }
     
 }

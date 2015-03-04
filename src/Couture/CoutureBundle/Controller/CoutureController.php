@@ -309,7 +309,7 @@ class CoutureController extends Controller
     public function cloturerAction(Couture $entity, $destination)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity->setEtat(1);
+        $entity->setEtat(2);
 
             $em->persist($entity);
             $em->flush();
@@ -323,7 +323,7 @@ class CoutureController extends Controller
     public function devaliderAction(Couture $entity, $destination)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity->setEtat(0);
+        $entity->setEtat(1);
 
             $em->persist($entity);
             $em->flush();
