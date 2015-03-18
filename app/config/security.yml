@@ -49,7 +49,7 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 login_path:     /login
-                default_target_path: vitrineIndex
+                default_target_path: dashboard
             logout:
                 path: fos_user_security_logout
                 #target: /login
