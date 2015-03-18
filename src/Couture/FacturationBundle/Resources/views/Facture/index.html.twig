@@ -42,7 +42,8 @@ Facturation
                 {#{ form_row(filterForm.datemod) }}
                 {{ form_row(filterForm.datec) }}
                 {{ form_row(filterForm.iduser) }}
-                {{ form_row(filterForm.avance) }#}
+                {{ form_row(filterForm.avance) }}
+                {{ form_row(filterForm.etatfacture) }#}
                 {{ form_rest(filterForm) }}
 
                 <p>
@@ -103,9 +104,17 @@ Facturation
             </a>
         {% else %}
             {% if entity.etatfacture.libelle == 'Validé'  %} 
+                <a class="btn btn-danger" href="{{ path('devalider_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
+                    Dévalider
+                </a>
                 <a class="btn btn-success" href="{{ path('regler_facture', { 'id': entity.id, 'destination': 'facture'  }) }}">
                 Régler
                 </a>
+            {% else %}
+                <a class="btn btn-danger" href="{{ path('devalider_facture', { 'id': entity.id, 'destination': 'facture_show' }) }}">
+                    Dévalider
+                </a>
+                
             {% endif %} 
         {% endif %} 
                      </td>

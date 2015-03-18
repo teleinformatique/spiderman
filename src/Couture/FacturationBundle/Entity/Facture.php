@@ -78,8 +78,15 @@ class Facture
      */
     private $etatfacture;
     
-   
-
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantite", type="integer", nullable=true)
+     */
+    private $quantite;
+    
+    
     public function __construct() {
         $this->datec = new \DateTime();
         
@@ -258,6 +265,17 @@ class Facture
         return $this->etatfacture;
     }
     
-    
+    public function getQuantite() {
+        return $this->quantite;
+    }
+
+    public function setQuantite($quantite) {
+        $this->quantite = $quantite;
+    }
+
+    public function chercherCouture ()
+    {
+        
+    }
     
 }

@@ -45,7 +45,7 @@
                 {{ form_row(filterForm.tissu) }}
                 {#{ form_row(filterForm.detail) }}
                 {{ form_row(filterForm.iduser) }#}
-                {#{ form_row(filterForm.etat) }#}
+                {{ form_row(filterForm.etat) }}
                 {{ form_rest(filterForm) }}
 
                 <p>
@@ -95,7 +95,7 @@
             <td>{{ entity.tissu }}</td>
             <!--td>{{ entity.detail }}</td>
             <td>{{ entity.iduser }}</td-->
-            <td>{% if entity.etat == 0 %} En cours {% else %} Terminé {% endif %}</td>
+            <td>{% if entity.etat == 1 %} En cours {% else %} Terminé {% endif %}</td>
             <td>
         <a class="btn btn-info" href="{{ path('couture_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -103,9 +103,15 @@
         <a class="btn btn-inverse" href="{{ path('couture_edit', { 'id': entity.id }) }}">
             {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
-        {% if entity.etat == 0 %}  <a class="btn btn-success" href="{{ path('cloturer_couture', { 'id': entity.id, 'destination': 'couture' }) }}">
-            Clôturer
-        </a> {% endif %}            </td>
+        {% if entity.etat == 1 %}  
+            <a class="btn btn-success" href="{{ path('cloturer_couture', { 'id': entity.id, 'destination': 'couture' }) }}">
+                Clôturer
+            </a> 
+        {% else %}
+            <a class="btn btn-warning" href="{{ path('devalider_couture', { 'id': entity.id, 'destination': 'couture' }) }}">
+                Dévalider
+            </a>
+        {% endif %}            </td>
         </tr>
     {% endfor %}
     </tbody>

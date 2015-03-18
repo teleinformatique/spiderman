@@ -23,6 +23,9 @@ couture_client:
     type:     annotation
     prefix:   /atelier
 
+devalider_facture:
+    path: /{id}/devalider-facture/{destination}
+    defaults: { _controller:CoutureFacturationBundle:Facture:devalider }
   
 valider_facture:
     path: /{id}/valider-facture/{destination}
@@ -35,6 +38,10 @@ regler_facture:
 cloturer_couture:
     path: /{id}/cloturer-couture/{destination}
     defaults: { _controller:CoutureCoutureBundle:Couture:cloturer }    
+
+devalider_couture:
+    path: /{id}/devalider-couture/{destination}
+    defaults: { _controller:CoutureCoutureBundle:Couture:devalider }
     
 liste_coutures:
     path: /{id}/liste-coutures
@@ -43,6 +50,10 @@ liste_coutures:
 liste_factures:
     path: /{id}/liste-factures
     defaults: { _controller:CoutureClientBundle:Client:listeFactures }
+    
+generer_facture:
+    path: /{idCouture}/generer-facture
+    defaults: { _controller:CoutureFacturationBundle:Facture:generer }
 # app/config/routing.yml
 #fos_user:
 #    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

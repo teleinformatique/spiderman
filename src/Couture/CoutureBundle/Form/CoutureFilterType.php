@@ -17,7 +17,7 @@ class CoutureFilterType extends AbstractType
 //            ->add('id', 'filter_number_range')
 //            ->add('datec', 'filter_date_range')
 //            ->add('datemod', 'filter_date_range')
-            //->add('datefin', 'filter_date_range')
+            ->add('datefin', 'filter_date_range')
             //->add('prix', 'filter_number_range')
             //->add('tissu', 'filter_text')
 //            ->add('detail', 'filter_text')
@@ -30,18 +30,18 @@ class CoutureFilterType extends AbstractType
                             'empty_value' => 'Filtrer par tissu',
                             'required' => false,
                             ))
-            ->add('modele','entity', array(
-                            'class' => 'CoutureCoutureBundle:Modele',
-                            'property' => 'libelle',
-                            'expanded' => false,
-                            'multiple' => false,
-                            'empty_value' => 'Filtrer par modèles',
-                            'required' => false,
-                ))
+//            ->add('modele','entity', array(
+//                            'class' => 'CoutureCoutureBundle:Modele',
+//                            'property' => 'libelle',
+//                            'expanded' => false,
+//                            'multiple' => false,
+//                            'empty_value' => 'Filtrer par modèles',
+//                            'required' => false,
+//                ))
             ->add('etat', 'choice', array(
-                        'choices'   => array('0' => 'En cours', '1' => 'Terminé'),
-                        'empty_value' => 'Choisir par Etat',
-                        'required' => false,
+                            'choices'   => array(1 => 'En cours', 2 => 'Terminé'),
+                            'empty_value' => 'Choisir par Etat',
+                            'required' => false,
                 ))
         ;
 
