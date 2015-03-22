@@ -15,6 +15,7 @@ use Couture\CoutureBundle\Entity\Modele;
 use Couture\CoutureBundle\Entity\Image as Image;
 use Couture\CoutureBundle\Form\ModeleType;
 use Couture\CoutureBundle\Form\ModeleFilterType;
+use Couture\CoutureBundle\Entity\Categoriemodele as Categoriemodele;
 
 /**
  * Modele controller.
@@ -51,8 +52,12 @@ class ModeleController extends Controller
     {
         $request = $this->getRequest();
         $session = $request->getSession();
-        $filterForm = $this->createForm(new ModeleFilterType());
+        $session->remove('ModeleControllerFilter');
         $em = $this->getDoctrine()->getManager();
+        
+        
+        $filterForm = $this->createForm(new ModeleFilterType() );
+        //$em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('CoutureCoutureBundle:Modele')->createQueryBuilder('e');
 
         // Reset filter

@@ -11,16 +11,16 @@ class MesureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cou')
-            ->add('poitrine')
-            ->add('taille')
-            ->add('ceinture')
-            ->add('longchemise')
-            ->add('longpantalon')
-            ->add('longrobe')
-            ->add('manche')
-            ->add('hanche')
-            ->add('epaule')
+            ->add('cou','number', array('label' => 'Cou'))
+            ->add('poitrine','number', array('label' => 'Tour Poitrine'))
+            ->add('taille','number', array('label' => 'Taille'))
+            ->add('ceinture','number', array('label' => 'Ceinture'))
+            ->add('longchemise','number', array('label' => 'Longueur Chemise'))
+            ->add('longpantalon','number', array('label' => 'Longueur Pantalon'))
+            ->add('longrobe','number', array('label' => 'Longueur Robe'))
+            ->add('manche','number', array('label' => 'Manche'))
+            ->add('hanche','number', array('label' => 'Hanche'))
+            ->add('epaule','number', array('label' => 'Epaule'))
         ;
     }
 

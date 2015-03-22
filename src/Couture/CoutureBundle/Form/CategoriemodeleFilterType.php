@@ -15,7 +15,7 @@ class CategoriemodeleFilterType extends AbstractType
     {
         $builder
             //->add('id', 'filter_number_range')
-            ->add('libelle', 'filter_text')
+            ->add('libelle', 'filter_text', array('label'=> 'Libellé'))
             //->add('description', 'filter_text')
         ;
 

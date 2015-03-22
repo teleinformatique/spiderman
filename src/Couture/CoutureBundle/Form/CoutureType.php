@@ -17,11 +17,11 @@ class CoutureType extends AbstractType
             
             ->add('prix')
             ->add('tissu')
-            ->add('detail')
+            ->add('detail','textarea', array('label' => 'Détails'))
             
             //->add('iduser')
             //->add('etat')
-            ->add('datefin')
+            ->add('datefin','date', array('label' => 'Date Finalisation'))
             ->add('client', 'entity', array(
                                 'class' => 'CoutureClientBundle:Client',
                                 'property' => 'infosClient',

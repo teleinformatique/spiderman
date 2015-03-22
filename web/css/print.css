@@ -110,12 +110,12 @@ body > div.container > div:nth-child(2) > div .alert-success
 {
     padding: 0;
     height: 100px;
-    width: 50%;
+    width: 100%;
     
     
 }
 
-.row span5
+.row span12
 {
     border: transparent;
 }

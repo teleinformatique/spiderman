@@ -86,7 +86,7 @@ Facturation
             <!--td>{% if entity.datemod %}{{ entity.datemod|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.datec %}{{ entity.datec|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{{ entity.iduser }}</td-->
-            <td>{{ entity.avance }}</td>
+            <td>{{ entity.avance|number_format(0, ',',' ')  }} F CFA</td>
             <td>{{ entity.etatfacture.libelle }}</td>
             <td>
         <a class="btn btn-inverse" href="{{ path('facture_show', { 'id': entity.id }) }}">

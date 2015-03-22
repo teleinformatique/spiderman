@@ -19,14 +19,16 @@ class ModeleFilterType extends AbstractType
             ->add('categoriemodele','entity', array(
                             'class' => 'CoutureCoutureBundle:Categoriemodele',
                             'property' => 'libelle',
+                            
                             'expanded' => false,
+                            'label' => 'Catégorie Modèle',
                             'multiple' => false,
-                            'empty_value' => 'Choisir une catégorie',
+                            'placeholder' => 'Choisir une catégorie',
                             'required' => false,
                             ))
             ->add('genre', 'choice', array(
                             'choices'   => array(1 => 'Femme', 2 => 'Homme'),
-                            'empty_value' => 'Filtrer par genre',
+                            'placeholder' => 'Filtrer par genre',
                             'required' => false,
                 ))
 //            ->add('description', 'filter_text')
