@@ -42,7 +42,7 @@
                 {{ form_row(filterForm.datemod) }}
                 {{ form_row(filterForm.datefin) }#}
                 {#{ form_row(filterForm.prix) }#}
-                {{ form_row(filterForm.tissu) }}
+                {#{ form_row(filterForm.tissu) }#}
                 {#{ form_row(filterForm.detail) }}
                 {{ form_row(filterForm.iduser) }#}
                 {{ form_row(filterForm.etat) }}
@@ -91,7 +91,7 @@
             <td>{{ entity.modele.libelle }}</td>
             <td>{% if entity.datefin %}{{ entity.datefin|date('d M Y') }}{% endif %}</td>
             
-            <td>{{ entity.prix }}</td>
+            <td class="prix">{{ entity.prix|number_format(0, ',',' ') }} F CFA</td>
             <td>{{ entity.tissu }}</td>
             <!--td>{{ entity.detail }}</td>
             <td>{{ entity.iduser }}</td-->

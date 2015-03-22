@@ -11,7 +11,7 @@ class CategoriemodeleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle')
+            ->add('libelle', 'text', array('label'=>'Libellé'))
             ->add('description')
         ;
     }

@@ -31,7 +31,7 @@
                             {% for facture in factures %}
                             <tr>
                                 <td><a href="{{ path('facture_show', { 'id': facture.id }) }}">{{facture.date|date('d-m-Y')}}</a></td>
-                                <td>{{facture.prix}}</td>
+                                <td>{{facture.prix}} F CFA</td>
                                 <td>{{ facture.libelle }}</td>
                             </tr>
                             {% endfor %}

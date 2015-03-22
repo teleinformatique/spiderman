@@ -52,6 +52,7 @@ class CoutureController extends Controller
     {
         $request = $this->getRequest();
         $session = $request->getSession();
+        $session->remove('CoutureControllerFilter');
         $filterForm = $this->createForm(new CoutureFilterType());
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('CoutureCoutureBundle:Couture')->createQueryBuilder('e');

@@ -80,6 +80,7 @@ doctrine:
                 dql:
                     datetime_functions:
                         date:     Luxifer\DQL\Datetime\Date
+                        month:     Luxifer\DQL\Datetime\Month
                         datediff: Luxifer\DQL\Datetime\DateDiff
             
 

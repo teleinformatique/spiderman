@@ -16,8 +16,9 @@ class ModeleType extends AbstractType
                 'property' => 'libelle',
                 'expanded' => false,
                 'multiple' => false,
+                'label' => 'Catégorie'
                 ))
-            ->add('libelle')
+            ->add('libelle','text', array('label'=>'Libellé'))
             ->add('description')
             //->add('datec')
             ->add('genre', 'choice', array(

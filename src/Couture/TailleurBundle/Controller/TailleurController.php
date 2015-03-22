@@ -298,16 +298,5 @@ class TailleurController extends Controller
         ;
     }
     
-    public function dashboardAction() {
-        
-        $em = $this->getDoctrine()->getManager();
-        $entity = new Tailleur();
-        $entity->getStatistique($em);
-        
-        $content = $this->renderView("CoutureTailleurBundle:Tailleur:dashboard.html.twig",
-                                    array(
-                                        
-                                    )
-                   );
-    }
+    
 }

@@ -16,7 +16,7 @@ class ClientFilterType extends AbstractType
         $builder
             //->add('id', 'filter_number_range')
             ->add('nom', 'filter_text')
-            ->add('prenom', 'filter_text')
+            ->add('prenom', 'filter_text', array('label'=>'Prénom'))
 //            ->add('telephone', 'filter_text')
 //            ->add('email', 'filter_text')
 //            ->add('adresse', 'filter_text')

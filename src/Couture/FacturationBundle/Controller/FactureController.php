@@ -57,8 +57,7 @@ class FactureController extends Controller
         $session = $request->getSession();
         $em = $this->getDoctrine()->getManager();
         
-        //$factures = $em->getRepository('CoutureFacturationBundle:Facture')->find(1);
-        //$em->persist($factures);
+        $session->remove('FactureControllerFilter');
     
         $filterForm = $this->createForm(new FactureFilterType()/*, new Facture ()*/);
         //$em = $this->getDoctrine()->getManager();

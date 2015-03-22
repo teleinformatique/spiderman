@@ -23,10 +23,10 @@
             <label class="control-label">Nom</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.nom }}</span>            </div>
         </div>        <div class="control-group">
-            <label class="control-label">Prenom</label>
+            <label class="control-label">Prénom</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.prenom }}</span>            </div>
         </div>        <div class="control-group">
-            <label class="control-label">Telephone</label>
+            <label class="control-label">Téléphone</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.telephone }}</span>            </div>
         </div>        <div class="control-group">
             <label class="control-label">Email</label>
@@ -89,7 +89,7 @@
                             {% for facture in factures %}
                             <tr>
                                 <td><a href="{{ path('facture_show', { 'id': facture.id }) }}">{{facture.date|date('d-m-Y')}}</a></td>
-                                <td>{{facture.prix}}</td>
+                                <td>{{facture.prix|number_format(0, ',',' ')}} F CFA</td>
                                 <td>{{ facture.libelle }}</td>
                             </tr>
                             {% endfor %}

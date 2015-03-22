@@ -420,13 +420,16 @@ class Couture
         
         $sql = "SELECT COUNT(*) as nb, DATE(datec) AS valeur "
             ."FROM couture "
-            ."GROUP BY valeur ";
+                . " WHERE YEAR(datec)=YEAR(NOW())"
+            ." GROUP BY MONTH(valeur)" ;
+                
 
 
             $rsm = new ResultSetMapping;
             $rsm->addScalarResult('nb', 'nb');
             $rsm->addScalarResult('valeur', 'valeur');
             $query = $em->createNativeQuery($sql, $rsm);
+            //$query->setMaxResults(30);
             $coutures = $query->getResult();
             //\Doctrine\Common\Util\Debug::dump($coutures);die;
             

@@ -11,9 +11,9 @@ jQuery(document).ready(function () {
         chartType: 'AreaChart',
         gvSettings: {
             vAxis: {title: 'Nbre de Coutures'},
-            hAxis: {title: 'Month'},
-            width: 720,
-            height: 300,
+            hAxis: {title: 'Mois'},
+            width: 960,
+            height: 400,
         }
     });
 
